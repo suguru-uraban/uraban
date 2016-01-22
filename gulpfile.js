@@ -1,15 +1,20 @@
-var gulp = require('gulp');
-var sass = require('gulp-ruby-sass');
-var plumber = require('gulp-plumber');
-var pleeease = require('gulp-pleeease');
-var cssmin = require('gulp-cssmin');
-var rename = require('gulp-rename');
+//プラグイン読み込み
+var gulp = require('gulp'),
+	sass = require('gulp-ruby-sass'),
+	plumber = require('gulp-plumber'),
+	pleeease = require('gulp-pleeease'),
+	cssmin = require('gulp-cssmin'),
+	rename = require('gulp-rename'),
+	uglify = require("gulp-uglify"),
+	concat = require("gulp-concat");
 
 //パスの設定
 var path = {
-    sass:'sass/',
+    sass:'asset/sass/',
     css:'asset/css/',
-    cssmin:'dist/css/'
+    cssmin:'dist/css/',
+    js:'asset/js/',
+    jsmin:'dist/js/'
 }
 
 //sass
@@ -42,12 +47,26 @@ gulp.task('cssmin', function () {
     .pipe(gulp.dest(path.cssmin));
 });
 
+//JavaScript
+gulp.task('js', function() {
+	console.log('--------- JavaScriptを処理します ----------');
+    gulp.src([path.js + '**/_*.js'])
+    .pipe(plumber())
+    .pipe(concat('common.js'))
+    .pipe(gulp.dest(path.js))
+    .pipe(uglify())
+    .pipe(rename({
+        suffix: '.min'
+    }))
+    .pipe(gulp.dest(path.jsmin));
+});
+
 //監視
 gulp.task('watch', function() {
     gulp.watch((path.sass + '**/*.scss'), ['sass']);
     gulp.watch((path.css + '**/*.css'), ['cssmin']);
+    gulp.watch((path.js + '**/*.js'), ['js']);
     //gulp.watch((src + '_ejs/**/*.ejs'), ['ejs']);
-    //gulp.watch((src + '_js/**/*.js'), ['concat']);
     //gulp.watch((src + 'img/**/*'), ['img']);
 });
 gulp.task('default', ['watch']);

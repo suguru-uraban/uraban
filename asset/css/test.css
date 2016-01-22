@@ -6,6 +6,7 @@ h1:hover {
 }
 
 .content {
+  pointer-events: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
