@@ -5,6 +5,7 @@ h1 {
   }
 }
 .content {
+	pointer-events: none;
 	display: flex;
 	appearance: none;
 	box-sizing: border-box;

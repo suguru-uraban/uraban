@@ -1,1 +1,1 @@
-h1{color:red}h1:hover{color:#00f}.content{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-border-radius:3px;border-radius:3px}
+h1{color:red}h1:hover{color:#00f}.content{pointer-events:none;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-border-radius:3px;border-radius:3px}
