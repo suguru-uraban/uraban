@@ -5,8 +5,9 @@ var gulp = require('gulp'),
 	pleeease = require('gulp-pleeease'),
 	cssmin = require('gulp-cssmin'),
 	rename = require('gulp-rename'),
+    concat = require("gulp-concat"),
 	uglify = require("gulp-uglify"),
-	concat = require("gulp-concat");
+    runSequence = require('run-sequence');
 
 //パスの設定
 var path = {
@@ -19,8 +20,7 @@ var path = {
 
 //sass
 gulp.task('sass',function(){
-    console.log('--------- sassを処理します ----------');
-    sass(path.sass + '**/*.scss',{
+    return sass(path.sass + '**/*.scss',{
         style : 'expanded',
         'sourcemap=none': true,
         compass: true
@@ -35,10 +35,9 @@ gulp.task('sass',function(){
     .pipe(gulp.dest(path.css));
 });
 
-//cssmin
+//css圧縮
 gulp.task('cssmin', function () {
-    console.log('--------- cssをminifyします ----------');
-    gulp.src(path.css + '**/*.css')
+    return gulp.src(path.css + '**/*.css')
     .pipe(plumber())
     .pipe(cssmin())
     .pipe(rename({
@@ -47,13 +46,28 @@ gulp.task('cssmin', function () {
     .pipe(gulp.dest(path.cssmin));
 });
 
-//JavaScript
-gulp.task('js', function() {
-	console.log('--------- JavaScriptを処理します ----------');
-    gulp.src([path.js + '**/_*.js'])
+//CSSの処理をまとめる
+gulp.task('css', function(callback) {
+    console.log('--------- CSSを処理します ----------');
+    return runSequence(
+        'sass',
+        'cssmin',
+        callback
+    );
+});
+
+//JavaScript連結
+gulp.task('concat', function() {
+    return gulp.src([path.js + '**/_*.js'])
     .pipe(plumber())
     .pipe(concat('common.js'))
-    .pipe(gulp.dest(path.js))
+    .pipe(gulp.dest(path.js));
+});
+
+//JavaScript圧縮
+gulp.task('uglify', function() {
+    return gulp.src([path.js + '**/common.js'])
+    .pipe(plumber())
     .pipe(uglify())
     .pipe(rename({
         suffix: '.min'
@@ -61,11 +75,20 @@ gulp.task('js', function() {
     .pipe(gulp.dest(path.jsmin));
 });
 
+//JavaScriptの処理をまとめる
+gulp.task('js', function(callback) {
+    console.log('--------- JavaScriptを処理します ----------');
+    return runSequence(
+        'concat',
+        'uglify',
+        callback
+    );
+});
+
 //監視
 gulp.task('watch', function() {
-    gulp.watch((path.sass + '**/*.scss'), ['sass']);
-    gulp.watch((path.css + '**/*.css'), ['cssmin']);
-    gulp.watch((path.js + '**/*.js'), ['js']);
+    gulp.watch((path.sass + '**/*.scss'), ['css']);
+    gulp.watch((path.js + '**/_*.js'), ['js']);
     //gulp.watch((src + '_ejs/**/*.ejs'), ['ejs']);
     //gulp.watch((src + 'img/**/*'), ['img']);
 });
