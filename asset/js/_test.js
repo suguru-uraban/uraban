@@ -1,5 +1,10 @@
-(function() {
-    window.addEventListener('load', function() {
-        alert('loaded');
-   });
-})();
+//----------------------
+//テスト
+//----------------------
+$(function() {
+	var test = 'test';
+	function test1() {
+		alert(test);
+	}
+	test1();
+});
