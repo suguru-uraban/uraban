@@ -1,7 +1,8 @@
 //プラグイン読み込み
 var gulp = require('gulp'),
+    del = require("del"),
+    plumber = require('gulp-plumber'),
 	sass = require('gulp-ruby-sass'),
-	plumber = require('gulp-plumber'),
 	pleeease = require('gulp-pleeease'),
 	cssmin = require('gulp-cssmin'),
 	rename = require('gulp-rename'),
@@ -11,14 +12,26 @@ var gulp = require('gulp'),
 
 //パスの設定
 var path = {
-    sass:'asset/sass/',
-    css:'asset/css/',
-    cssmin:'dist/css/',
-    js:'asset/js/',
-    jsmin:'dist/js/'
+    sass: 'asset/sass/',
+    css: 'asset/css/',
+    cssmin: 'dist/css/',
+    js: 'asset/js/',
+    jsmin: 'dist/js/',
+    tmp: 'asset/tmp/'
 }
 
-//sass
+//------------------------------------------------------
+//削除処理
+//------------------------------------------------------
+//一時ファイルの削除
+gulp.task("clean", function () {
+  del([path.tmp]);
+});
+
+//------------------------------------------------------
+//CSSの処理
+//------------------------------------------------------
+//Sass
 gulp.task('sass',function(){
     return sass(path.sass + '**/*.scss',{
         style : 'expanded',
@@ -49,24 +62,23 @@ gulp.task('cssmin', function () {
 //CSSの処理をまとめる
 gulp.task('css', function(callback) {
     console.log('--------- CSSを処理します ----------');
-    return runSequence(
-        'sass',
-        'cssmin',
-        callback
-    );
+    return runSequence('sass','cssmin',callback);
 });
 
+//------------------------------------------------------
+//JavaScriptの処理
+//------------------------------------------------------
 //JavaScript連結
 gulp.task('concat', function() {
-    return gulp.src([path.js + '**/_*.js'])
+    return gulp.src([path.js + '**/*.js'])
     .pipe(plumber())
     .pipe(concat('common.js'))
-    .pipe(gulp.dest(path.js));
+    .pipe(gulp.dest(path.tmp));
 });
 
 //JavaScript圧縮
 gulp.task('uglify', function() {
-    return gulp.src([path.js + '**/common.js'])
+    return gulp.src([path.tmp + '**/common.js'])
     .pipe(plumber())
     .pipe(uglify())
     .pipe(rename({
@@ -78,17 +90,16 @@ gulp.task('uglify', function() {
 //JavaScriptの処理をまとめる
 gulp.task('js', function(callback) {
     console.log('--------- JavaScriptを処理します ----------');
-    return runSequence(
-        'concat',
-        'uglify',
-        callback
-    );
+    return runSequence('concat','uglify','clean',callback);
 });
 
+//------------------------------------------------------
+//タスクの監視
+//------------------------------------------------------
 //監視
 gulp.task('watch', function() {
     gulp.watch((path.sass + '**/*.scss'), ['css']);
-    gulp.watch((path.js + '**/_*.js'), ['js']);
+    gulp.watch((path.js + '**/*.js'), ['js']);
     //gulp.watch((src + '_ejs/**/*.ejs'), ['ejs']);
     //gulp.watch((src + 'img/**/*'), ['img']);
 });
