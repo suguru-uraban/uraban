@@ -1,22 +1,25 @@
 //プラグイン読み込み
 var gulp = require('gulp'),
-    del = require("del"),
+    del = require('del'),
     plumber = require('gulp-plumber'),
 	sass = require('gulp-ruby-sass'),
 	pleeease = require('gulp-pleeease'),
 	cssmin = require('gulp-cssmin'),
 	rename = require('gulp-rename'),
-    concat = require("gulp-concat"),
-	uglify = require("gulp-uglify"),
+    concat = require('gulp-concat'),
+	uglify = require('gulp-uglify'),
+    ejs = require('gulp-ejs'),
     runSequence = require('run-sequence');
 
 //パスの設定
 var path = {
+    root: 'dist/',
     sass: 'asset/sass/',
     css: 'asset/css/',
     cssmin: 'dist/css/',
     js: 'asset/js/',
     jsmin: 'dist/js/',
+    ejs: 'asset/ejs/',
     tmp: 'asset/tmp/'
 }
 
@@ -94,13 +97,25 @@ gulp.task('js', function(callback) {
 });
 
 //------------------------------------------------------
+//HTMLの処理
+//------------------------------------------------------
+//ejs
+gulp.task('ejs', function() {
+    console.log('--------- ejsをHTMLに変換します ----------');
+    return gulp.src([path.ejs + '**/*.ejs','!' + path.ejs + '**/_*.ejs'])
+    .pipe(plumber())
+    .pipe(ejs({}, {ext: '.html'}))
+    .pipe(gulp.dest(path.root));
+});
+
+//------------------------------------------------------
 //タスクの監視
 //------------------------------------------------------
 //監視
 gulp.task('watch', function() {
     gulp.watch((path.sass + '**/*.scss'), ['css']);
     gulp.watch((path.js + '**/*.js'), ['js']);
-    //gulp.watch((src + '_ejs/**/*.ejs'), ['ejs']);
+    gulp.watch((path.ejs + '**/*.ejs'), ['ejs']);
     //gulp.watch((src + 'img/**/*'), ['img']);
 });
 gulp.task('default', ['watch']);
