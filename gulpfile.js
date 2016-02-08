@@ -9,6 +9,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
     ejs = require('gulp-ejs'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
     runSequence = require('run-sequence');
 
 //パスの設定
@@ -16,10 +18,12 @@ var path = {
     root: 'dist/',
     sass: 'asset/sass/',
     css: 'asset/css/',
-    cssmin: 'dist/css/',
+    cssmin: 'dist/asset/css/',
     js: 'asset/js/',
-    jsmin: 'dist/js/',
+    jsmin: 'dist/asset/js/',
     ejs: 'asset/ejs/',
+    img: 'asset/img/',
+    imgmin: 'dist/asset/img/',
     tmp: 'asset/tmp/'
 }
 
@@ -28,7 +32,7 @@ var path = {
 //------------------------------------------------------
 //一時ファイルの削除
 gulp.task("clean", function () {
-  del([path.tmp]);
+    del([path.tmp]);
 });
 
 //------------------------------------------------------
@@ -109,6 +113,25 @@ gulp.task('ejs', function() {
 });
 
 //------------------------------------------------------
+//画像の処理
+//------------------------------------------------------
+//画像圧縮
+gulp.task('imagemin', function() {
+    return gulp.src([path.img + '**/*.+(jpg|jpeg|png|gif|svg)'])
+    .pipe(imagemin({
+        progressive: true,
+        use: [pngquant({quality: '65-80', speed: 1})]
+    }))
+    .pipe(gulp.dest(path.imgmin));
+});
+
+//画像の処理をまとめる
+gulp.task('img', function(callback) {
+    console.log('--------- 画像を処理します ----------');
+    return runSequence('imagemin',callback);
+});
+
+//------------------------------------------------------
 //タスクの監視
 //------------------------------------------------------
 //監視
@@ -116,6 +139,6 @@ gulp.task('watch', function() {
     gulp.watch((path.sass + '**/*.scss'), ['css']);
     gulp.watch((path.js + '**/*.js'), ['js']);
     gulp.watch((path.ejs + '**/*.ejs'), ['ejs']);
-    //gulp.watch((src + 'img/**/*'), ['img']);
+    gulp.watch((path.img + '**/*.+(jpg|jpeg|png|gif|svg)'), ['img']);
 });
 gulp.task('default', ['watch']);
