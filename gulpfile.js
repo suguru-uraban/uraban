@@ -8,10 +8,15 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
     concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
+    gulpif = require('gulp-if'),
     ejs = require('gulp-ejs'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    mainBowerFiles= require('main-bower-files');
+
+//bowerファイル格納
+var files = mainBowerFiles();
 
 //パスの設定
 var path = {
@@ -19,8 +24,12 @@ var path = {
     sass: 'asset/sass/',
     css: 'asset/css/',
     cssmin: 'dist/asset/css/',
+    csslib: 'asset/lib/css/',
+    csslibmin: 'dist/asset/lib/css/',
     js: 'asset/js/',
     jsmin: 'dist/asset/js/',
+    jslib: 'asset/lib/js/',
+    jslibmin: 'dist/asset/lib/js/',
     ejs: 'asset/ejs/',
     img: 'asset/img/',
     imgmin: 'dist/asset/img/',
@@ -48,14 +57,14 @@ gulp.task('sass',function(){
     .pipe(plumber())
     .pipe(pleeease({
         autoprefixer: {
-            'browsers': ['last 4 versions', 'ie 6', 'ie 7', 'ie 8', 'Safari 4', 'Android 2.3', 'iOS 4']
+            'browsers': ['last 4 versions', 'ie 8', 'Safari 4', 'Android 2.3', 'iOS 4']
         },
         minifier: false
     }))
     .pipe(gulp.dest(path.css));
 });
 
-//css圧縮
+//CSS圧縮
 gulp.task('cssmin', function () {
     return gulp.src(path.css + '**/*.css')
     .pipe(plumber())
@@ -118,6 +127,7 @@ gulp.task('ejs', function() {
 //画像圧縮
 gulp.task('imagemin', function() {
     return gulp.src([path.img + '**/*.+(jpg|jpeg|png|gif|svg)'])
+    .pipe(plumber())
     .pipe(imagemin({
         progressive: true,
         use: [pngquant({quality: '65-80', speed: 1})]
@@ -132,6 +142,54 @@ gulp.task('img', function(callback) {
 });
 
 //------------------------------------------------------
+//ライブラリの処理
+//------------------------------------------------------
+//ライブラリを連結して一時フォルダに保存
+gulp.task('bowerConcat', function() {
+    return gulp.src(files)
+    .pipe(plumber())
+    .pipe(gulpif(function(file) {
+        return file.path.substr(-4) === '.css';
+    }
+    ,concat('bower_components.css')
+    ,concat('bower_components.js')
+    ))
+    .pipe(gulp.dest(path.tmp))
+});
+
+//JSライブラリの圧縮
+gulp.task('bowerUglify', function() {
+    return gulp.src([path.tmp + '**/bower_components.js'])
+    .pipe(plumber())
+    .pipe(uglify({
+        preserveComments: 'some'
+    }))
+    .pipe(rename({
+        suffix: '.min'
+    }))
+    .pipe(gulp.dest(path.jslib))
+    .pipe(gulp.dest(path.jslibmin));
+});
+
+//CSSライブラリの圧縮
+gulp.task('bowerCssmin', function () {
+    return gulp.src(path.tmp + '**/bower_components.css')
+    .pipe(plumber())
+    .pipe(cssmin())
+    .pipe(rename({
+        suffix: '.min'
+    }))
+    .pipe(gulp.dest(path.csslib))
+    .pipe(gulp.dest(path.csslibmin));
+});
+
+//ライブラリの処理をまとめる
+gulp.task('bower', function(callback) {
+    console.log('--------- ライブラリを処理します ----------');
+    return runSequence('bowerConcat',['bowerUglify','bowerCssmin'],'clean',callback);
+});
+
+//------------------------------------------------------
 //タスクの監視
 //------------------------------------------------------
 //監視
@@ -140,5 +198,6 @@ gulp.task('watch', function() {
     gulp.watch((path.js + '**/*.js'), ['js']);
     gulp.watch((path.ejs + '**/*.ejs'), ['ejs']);
     gulp.watch((path.img + '**/*.+(jpg|jpeg|png|gif|svg)'), ['img']);
+    gulp.watch((files), ['bower']);
 });
 gulp.task('default', ['watch']);
