@@ -8,7 +8,6 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
     concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
-    gulpif = require('gulp-if'),
     ejs = require('gulp-ejs'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
@@ -24,12 +23,10 @@ var path = {
     sass: 'asset/sass/',
     css: 'asset/css/',
     cssmin: 'dist/asset/css/',
-    csslib: 'asset/lib/css/',
-    csslibmin: 'dist/asset/lib/css/',
     js: 'asset/js/',
     jsmin: 'dist/asset/js/',
-    jslib: 'asset/lib/js/',
-    jslibmin: 'dist/asset/lib/js/',
+    lib: 'asset/lib/',
+    libmin: 'dist/asset/lib/',
     ejs: 'asset/ejs/',
     img: 'asset/img/',
     imgmin: 'dist/asset/img/',
@@ -144,20 +141,15 @@ gulp.task('img', function(callback) {
 //------------------------------------------------------
 //ライブラリの処理
 //------------------------------------------------------
-//ライブラリを連結して一時フォルダに保存
+//ライブラリの連結
 gulp.task('bowerConcat', function() {
-    return gulp.src(files)
+	return gulp.src(files)
     .pipe(plumber())
-    .pipe(gulpif(function(file) {
-        return file.path.substr(-4) === '.css';
-    }
-    ,concat('bower_components.css')
-    ,concat('bower_components.js')
-    ))
+    .pipe(concat('bower_components.js'))
     .pipe(gulp.dest(path.tmp))
 });
 
-//JSライブラリの圧縮
+//ライブラリの圧縮
 gulp.task('bowerUglify', function() {
     return gulp.src([path.tmp + '**/bower_components.js'])
     .pipe(plumber())
@@ -167,26 +159,14 @@ gulp.task('bowerUglify', function() {
     .pipe(rename({
         suffix: '.min'
     }))
-    .pipe(gulp.dest(path.jslib))
-    .pipe(gulp.dest(path.jslibmin));
-});
-
-//CSSライブラリの圧縮
-gulp.task('bowerCssmin', function () {
-    return gulp.src(path.tmp + '**/bower_components.css')
-    .pipe(plumber())
-    .pipe(cssmin())
-    .pipe(rename({
-        suffix: '.min'
-    }))
-    .pipe(gulp.dest(path.csslib))
-    .pipe(gulp.dest(path.csslibmin));
+    .pipe(gulp.dest(path.lib))
+    .pipe(gulp.dest(path.libmin));
 });
 
 //ライブラリの処理をまとめる
 gulp.task('bower', function(callback) {
     console.log('--------- ライブラリを処理します ----------');
-    return runSequence('bowerConcat',['bowerUglify','bowerCssmin'],'clean',callback);
+    return runSequence('bowerConcat','bowerUglify','clean',callback);
 });
 
 //------------------------------------------------------
@@ -198,6 +178,5 @@ gulp.task('watch', function() {
     gulp.watch((path.js + '**/*.js'), ['js']);
     gulp.watch((path.ejs + '**/*.ejs'), ['ejs']);
     gulp.watch((path.img + '**/*.+(jpg|jpeg|png|gif|svg)'), ['img']);
-    gulp.watch((files), ['bower']);
 });
 gulp.task('default', ['watch']);
