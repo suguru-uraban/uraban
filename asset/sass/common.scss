@@ -1,4 +1,10 @@
 @charset "utf-8";
 
+//リセット
 @import "_reset";
+
+//スプライト
+@import "_sprite";
+@import "_sprite_mixin";
+
 @import "_incomplete";

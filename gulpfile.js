@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     runSequence = require('run-sequence'),
-    mainBowerFiles= require('main-bower-files');
+    mainBowerFiles= require('main-bower-files'),
+    spritesmith = require('gulp.spritesmith');
 
 //bowerファイル格納
 var files = mainBowerFiles();
@@ -30,6 +31,7 @@ var path = {
     ejs: 'asset/ejs/',
     img: 'asset/img/',
     imgmin: 'dist/asset/img/',
+    sprite: 'asset/img/sprite/',
     tmp: 'asset/tmp/'
 }
 
@@ -123,7 +125,7 @@ gulp.task('ejs', function() {
 //------------------------------------------------------
 //画像圧縮
 gulp.task('imagemin', function() {
-    return gulp.src([path.img + '**/*.+(jpg|jpeg|png|gif|svg)'])
+    return gulp.src([path.img + '**/*.+(jpg|jpeg|png|gif|svg)','!' + path.sprite + '**/*.png'])
     .pipe(plumber())
     .pipe(imagemin({
         progressive: true,
@@ -136,6 +138,33 @@ gulp.task('imagemin', function() {
 gulp.task('img', function(callback) {
     console.log('--------- 画像を処理します ----------');
     return runSequence('imagemin',callback);
+});
+
+//------------------------------------------------------
+//スプライトの処理
+//------------------------------------------------------
+gulp.task('spriteBuild', function () {
+    var spriteData = gulp.src(path.sprite + '**/*.png')
+    .pipe(spritesmith({
+        imgName: 'sprite.png',
+        cssName: '_sprite.scss',
+        imgPath: '../img/sprite.png',
+        cssFormat: 'scss',
+        cssOpts: {
+            functions: false
+        },
+        cssVarMap: function (sprite) {
+            sprite.name = 'sprite-' + sprite.name;
+        }
+    }));
+    spriteData.img.pipe(gulp.dest(path.img));
+    spriteData.css.pipe(gulp.dest(path.sass));
+});
+
+//スプライトの処理をまとめる
+gulp.task('sprite', function(callback) {
+    console.log('--------- 画像を処理します ----------');
+    return runSequence('spriteBuild','sass',['cssmin','imagemin'],callback);
 });
 
 //------------------------------------------------------
@@ -178,5 +207,6 @@ gulp.task('watch', function() {
     gulp.watch((path.js + '**/*.js'), ['js']);
     gulp.watch((path.ejs + '**/*.ejs'), ['ejs']);
     gulp.watch((path.img + '**/*.+(jpg|jpeg|png|gif|svg)'), ['img']);
+    gulp.watch((path.sprite + '**/*.png'), ['sprite']);
 });
 gulp.task('default', ['watch']);
