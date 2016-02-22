@@ -55,6 +55,7 @@ gulp.task('sass',function(){
     })
     .pipe(plumber())
     .pipe(pleeease({
+        rem: ['10px'],
         autoprefixer: {
             'browsers': ['last 4 versions', 'ie 8', 'Safari 4', 'Android 2.3', 'iOS 4']
         },
