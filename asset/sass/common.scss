@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+//変数
+@import "_variable";
+
 //リセット
 @import "_reset";
 
@@ -7,4 +10,5 @@
 @import "_sprite";
 @import "_sprite_mixin";
 
-@import "_incomplete";
+//ヘッダー
+@import "_header";
