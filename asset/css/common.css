@@ -27,7 +27,7 @@ html, body {
 body {
   line-height: 1;
   font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
-  background: #f3f3f3;
+  background: #ffffff;
 }
 
 article, aside, details, figcaption, figure,
@@ -165,8 +165,8 @@ The `sprites` mixin generates identical output to the CSS template
   padding: 10px;
   -webkit-border-radius: 4px;
           border-radius: 4px;
-  -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
-          box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
   background: #ffffff;
 }
 .header .profile img {
@@ -190,48 +190,6 @@ The `sprites` mixin generates identical output to the CSS template
   font-size: 1.1rem;
 }
 
-@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
-  .header {
-    width: 100%;
-    height: auto;
-    position: relative;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    background: #3d3d3d;
-  }
-  .header h1 {
-    font-size: 1.8rem;
-    line-height: 1.0;
-  }
-  .header .summary {
-    margin-top: 6px;
-    line-height: 1.2;
-  }
-  .header .profile {
-    margin-top: 0;
-    padding: 20px 10px 0;
-    width: 250px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: -260px;
-    -webkit-border-radius: 0;
-            border-radius: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
-            box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
-    z-index: 1;
-  }
-  .header .profile dl dt {
-    font-size: 1.6rem;
-    font-weight: bold;
-  }
-  .header .profile dl dd {
-    margin-left: 10px;
-    font-size: 1.5rem;
-  }
-}
 .nav {
   width: 180px;
   position: fixed;
@@ -261,7 +219,7 @@ The `sprites` mixin generates identical output to the CSS template
   border-bottom: transparent solid 10px;
   border-left-style: solid;
   border-left-width: 5px;
-  background: #ffffff;
+  background: #f3f3f3;
   cursor: pointer;
 }
 .nav ul li.intro {
