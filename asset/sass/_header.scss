@@ -25,8 +25,8 @@
         margin-top: 10px;
         padding: 10px;
         border-radius: 4px;
-        box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
-        background: $body_color;
+        box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
+        background: $white_color;
         img {
             margin: 0 auto;
             display: block;
@@ -43,6 +43,48 @@
             }
             dd {
                 font-size: 1.1rem;
+            }
+        }
+    }
+}
+@media only screen and (max-device-width: 640px),
+only screen and (max-device-width: 667px),
+only screen and (max-width: 480px) { 
+    .header {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-sizing: border-box;
+        background: $base_color;
+        h1 {
+            font-size: 1.8rem;
+            line-height: 1.0;
+        }
+        .summary {
+            margin-top: 6px;
+            line-height: 1.2;
+        }
+        .profile {
+            margin-top: 0;
+            padding: 20px 10px 0;
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -260px;
+            border-radius: 0;
+            box-sizing: border-box;
+            box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
+            z-index: 1;
+            dl {
+                dt {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                }
+                dd {
+                    margin-left: 10px;
+                    font-size: 1.5rem;
+                }
             }
         }
     }
