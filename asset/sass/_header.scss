@@ -52,8 +52,9 @@
 only screen and (max-device-width: 667px),
 only screen and (max-width: 480px) { 
     .header {
+        padding: 6px 60px;
         width: 100%;
-        height: auto;
+        height: 60px;
         position: relative;
         box-sizing: border-box;
         background: $base_color;
@@ -62,7 +63,7 @@ only screen and (max-width: 480px) {
             line-height: 1.0;
         }
         .summary {
-            margin-top: 6px;
+            margin-top: 2px;
             line-height: 1.2;
         }
         .profile {
@@ -87,6 +88,20 @@ only screen and (max-width: 480px) {
                     margin-left: 10px;
                     font-size: 1.5rem;
                 }
+            }
+            .profile_btn {
+                width: 50px;
+                height: 50px;
+                text-indent: -9999px;
+                display: none;
+                position: fixed;
+                top: 5px;
+                left: 5px;
+                border-radius: 4px;
+                box-shadow: 2px 2px 1px rgba(0,0,0,0.6);
+                cursor: pointer;
+                @include sprite($sprite-profile);
+                background-color: $white_color;
             }
         }
     }

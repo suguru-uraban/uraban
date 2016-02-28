@@ -11,6 +11,17 @@ $icon-home: x y offset_x offset_y width height total_width total_height image_pa
 At the bottom of this section, we provide information about the spritesheet itself
 $spritesheet: width height image $spritesheet-sprites;
 */
+$sprite-profile-name: 'sprite-profile';
+$sprite-profile-x: 1687px;
+$sprite-profile-y: 0px;
+$sprite-profile-offset-x: -1687px;
+$sprite-profile-offset-y: 0px;
+$sprite-profile-width: 100px;
+$sprite-profile-height: 100px;
+$sprite-profile-total-width: 1787px;
+$sprite-profile-total-height: 1687px;
+$sprite-profile-image: '../img/sprite.png';
+$sprite-profile: (1687px, 0px, -1687px, 0px, 100px, 100px, 1787px, 1687px, '../img/sprite.png', 'sprite-profile', );
 $sprite-twitterlogo-name: 'sprite-twitterlogo';
 $sprite-twitterlogo-x: 0px;
 $sprite-twitterlogo-y: 0px;
@@ -18,14 +29,14 @@ $sprite-twitterlogo-offset-x: 0px;
 $sprite-twitterlogo-offset-y: 0px;
 $sprite-twitterlogo-width: 1687px;
 $sprite-twitterlogo-height: 1687px;
-$sprite-twitterlogo-total-width: 1687px;
+$sprite-twitterlogo-total-width: 1787px;
 $sprite-twitterlogo-total-height: 1687px;
 $sprite-twitterlogo-image: '../img/sprite.png';
-$sprite-twitterlogo: (0px, 0px, 0px, 0px, 1687px, 1687px, 1687px, 1687px, '../img/sprite.png', 'sprite-twitterlogo', );
-$spritesheet-width: 1687px;
+$sprite-twitterlogo: (0px, 0px, 0px, 0px, 1687px, 1687px, 1787px, 1687px, '../img/sprite.png', 'sprite-twitterlogo', );
+$spritesheet-width: 1787px;
 $spritesheet-height: 1687px;
 $spritesheet-image: '../img/sprite.png';
-$spritesheet-sprites: ($sprite-twitterlogo, );
-$spritesheet: (1687px, 1687px, '../img/sprite.png', $spritesheet-sprites, );
+$spritesheet-sprites: ($sprite-profile, $sprite-twitterlogo, );
+$spritesheet: (1787px, 1687px, '../img/sprite.png', $spritesheet-sprites, );
 
 
