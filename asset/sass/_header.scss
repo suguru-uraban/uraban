@@ -55,7 +55,7 @@ only screen and (max-width: 480px) {
         padding: 6px 60px;
         width: 100%;
         height: 60px;
-        position: relative;
+        position: static;
         box-sizing: border-box;
         background: $base_color;
         h1 {
@@ -78,7 +78,7 @@ only screen and (max-width: 480px) {
             border-radius: 0;
             box-sizing: border-box;
             box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
-            z-index: 1;
+            z-index: 2;
             dl {
                 dt {
                     font-size: 1.6rem;
@@ -89,20 +89,46 @@ only screen and (max-width: 480px) {
                     font-size: 1.5rem;
                 }
             }
-            .profile_btn {
-                width: 50px;
-                height: 50px;
-                text-indent: -9999px;
-                display: none;
-                position: fixed;
-                top: 5px;
-                left: 5px;
-                border-radius: 4px;
-                box-shadow: 2px 2px 1px rgba(0,0,0,0.6);
-                cursor: pointer;
-                @include sprite($sprite-profile);
-                background-color: $white_color;
-            }
+        }
+    }
+    .profile_btn {
+        width: 50px;
+        height: 50px;
+        text-indent: -9999px;
+        display: none;
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        @include sprite($sprite-profile);
+        background-color: rgba(61,61,61,0.7);
+    }
+    .profile_back {
+        width: 100%;
+        height: 100%;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 1;
+        &:before,&:after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            text-indent: -9999px;
+            position: absolute;
+            right: 15px;
+            border-right: $back_text_color solid 3px;
+        }
+        &:before {
+            top: -1px;
+            transform: rotate(45deg);
+        }
+        &:after {
+            top: 20px;
+            transform: rotate(-45deg);
         }
     }
 }
