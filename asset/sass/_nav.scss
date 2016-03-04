@@ -46,3 +46,33 @@
         }
     }
 }
+@media only screen and (max-device-width: 640px),
+only screen and (max-device-width: 667px),
+only screen and (max-width: 480px) { 
+    @import "_extend";
+    .nav {
+        width: 200px;
+        top: 0;
+        right: -260px;
+        z-index: 2;
+        ul {
+            width: 200px;
+            li {
+                margin: 0 0 1px;
+                padding: 0 0 0 24px;
+                width: 200px;
+            }
+        }
+    }
+    .menu_btn {
+        @extend %slide_btn;
+        right: 5px;
+        @include sprite($sprite-menu);
+    }
+    .menu_back {
+        @extend %slide_back;
+        &:before,&:after { left: -6px; }
+        &:before { top: -1px; }
+        &:after { top: 20px; }
+    }
+}
