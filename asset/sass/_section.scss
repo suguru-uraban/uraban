@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.content_body {
+    margin: 0 190px 0 210px;
+    padding-top: 50px;
+    color: $base_text_color;
+    .content_section {
+        padding: 10px;
+        border-radius: 4px;
+        background: $white_color;
+        h2 {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            font-size: 2rem;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+        .content_list {
+            margin-top: 10px;
+            li {
+                margin-left: 20px;
+                padding: 0 10px 0 30px;
+                position: relative;
+                border-bottom: $list_border_color solid 1px;
+                .content_parts {
+                    h3 {
+                        font-size: 1.8rem;
+                        line-height: 1.4;
+                        position: relative;
+                        &:before {
+                            @extend %triangle;
+                            top: 3px;
+                            left: -16px;
+                            border-width: 8px;
+                        }
+                        &.close:before {
+                            border-left: $list_arrow_color solid 10px;
+                        }
+                    }
+                }
+            }
+        }
+        &.intro {
+            h2 {
+                border-left: $nav_intro_color solid 10px;
+                border-bottom: $nav_intro_color solid 1px;
+            }
+        }
+    }
+}
