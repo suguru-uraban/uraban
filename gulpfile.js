@@ -59,7 +59,8 @@ gulp.task('sass',function(){
             'browsers': ['last 4 versions', 'Firefox ESR', 'ie 8', 'Safari 4', 'Android 2.3', 'iOS 4']
         },
         rem: ['10px'],
-        minifier: false
+        minifier: false,
+        mqpacker: true
     }))
     .pipe(gulp.dest(path.css));
 });

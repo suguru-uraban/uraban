@@ -6,6 +6,9 @@
 //リセット
 @import "_reset";
 
+//extend
+@import "_extend";
+
 //スプライト
 @import "_sprite";
 @import "_sprite_mixin";
@@ -15,3 +18,6 @@
 
 //ナビゲーション
 @import "_nav";
+
+//コンテンツ部分
+@import "_section";

@@ -36,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-nav ul {
+ul {
   list-style: none;
 }
 
@@ -96,6 +96,15 @@ hr {
 
 input, select {
   vertical-align: middle;
+}
+
+.content_body .content_section .content_list li .content_parts h3:before {
+  width: 0;
+  height: 0;
+  content: "";
+  position: absolute;
+  border-color: transparent;
+  border-style: solid;
 }
 
 /*
@@ -204,121 +213,6 @@ The `sprites` mixin generates identical output to the CSS template
   font-size: 12px;
   font-size: 1.2rem;
 }
-
-@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
-  .profile_btn, .menu_btn {
-    width: 50px;
-    height: 50px;
-    text-indent: -9999px;
-    display: none;
-    position: fixed;
-    top: 5px;
-    -webkit-border-radius: 4px;
-            border-radius: 4px;
-    cursor: pointer;
-    background-color: rgba(61, 61, 61, 0.7);
-  }
-
-  .profile_back, .menu_back {
-    width: 100%;
-    height: 100%;
-    text-indent: -9999px;
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1;
-    cursor: pointer;
-  }
-  .profile_back:before, .menu_back:before, .profile_back:after, .menu_back:after {
-    content: "";
-    width: 30px;
-    height: 30px;
-    display: block;
-    text-indent: -9999px;
-    position: absolute;
-    border-right: #e3e3e3 solid 3px;
-  }
-  .profile_back:before, .menu_back:before {
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
-  .profile_back:after, .menu_back:after {
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-
-  .header {
-    padding: 6px 60px;
-    width: 100%;
-    height: 60px;
-    position: static;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    background: #3d3d3d;
-  }
-  .header h1 {
-    font-size: 1.8rem;
-    line-height: 1.0;
-  }
-  .header .summary {
-    margin-top: 2px;
-    line-height: 1.2;
-  }
-  .header .profile {
-    margin-top: 0;
-    padding: 20px 10px 0;
-    width: 250px;
-    height: 100%;
-    content: "sp";
-    position: fixed;
-    top: 0;
-    left: -260px;
-    -webkit-border-radius: 0;
-            border-radius: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
-            box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
-    z-index: 2;
-  }
-  .header .profile dl dt {
-    padding-left: 9px;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  .header .profile dl dt:before {
-    border: transparent solid 5px;
-    border-left: #3d3d3d solid 7px;
-  }
-  .header .profile dl dd {
-    margin-left: 9px;
-    font-size: 1.4rem;
-  }
-
-  .profile_btn {
-    left: 5px;
-    background-image: url(../img/sprite.png);
-    background-position: -843.5px -50px;
-    width: 50px;
-    height: 50px;
-    -webkit-background-size: 893.5px 843.5px;
-            background-size: 893.5px 843.5px;
-  }
-
-  .profile_back:before, .profile_back:after {
-    right: 15px;
-  }
-  .profile_back:before {
-    top: -1px;
-  }
-  .profile_back:after {
-    top: 20px;
-  }
-}
 .nav {
   width: 180px;
   position: fixed;
@@ -376,24 +270,176 @@ The `sprites` mixin generates identical output to the CSS template
       -ms-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-
-@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
-  .nav {
+.content_body {
+  margin: 0 190px 0 210px;
+  padding-top: 50px;
+  color: #333333;
+}
+.content_body .content_section {
+  padding: 10px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  background: #ffffff;
+}
+.content_body .content_section h2 {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  font-size: 20px;
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
+.content_body .content_section .content_list {
+  margin-top: 10px;
+}
+.content_body .content_section .content_list li {
+  margin-left: 20px;
+  padding: 0 10px 0 30px;
+  position: relative;
+  border-bottom: #cccccc solid 1px;
+}
+.content_body .content_section .content_list li .content_parts h3 {
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  position: relative;
+}
+.content_body .content_section .content_list li .content_parts h3:before {
+  top: 3px;
+  left: -16px;
+  border-width: 8px;
+}
+.content_body .content_section .content_list li .content_parts h3.close:before {
+  border-left: #cccccc solid 10px;
+}
+.content_body .content_section.intro h2 {
+  border-left: #686868 solid 10px;
+  border-bottom: #686868 solid 1px;
+}
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px){
+  .profile_btn, .menu_btn{
+    width: 50px;
+    height: 50px;
+    text-indent: -9999px;
+    display: none;
+    position: fixed;
+    top: 5px;
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    cursor: pointer;
+    background-color: rgba(61, 61, 61, 0.7);
+  }
+  .profile_back, .menu_back{
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    cursor: pointer;
+  }
+  .profile_back:before, .menu_back:before, .profile_back:after, .menu_back:after{
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-indent: -9999px;
+    position: absolute;
+    border-right: #e3e3e3 solid 3px;
+  }
+  .profile_back:before, .menu_back:before{
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .profile_back:after, .menu_back:after{
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  .header{
+    padding: 6px 60px;
+    width: 100%;
+    height: 60px;
+    position: static;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background: #3d3d3d;
+  }
+  .header h1{
+    font-size: 1.8rem;
+    line-height: 1.0;
+  }
+  .header .summary{
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+  .header .profile{
+    margin-top: 0;
+    padding: 20px 10px 0;
+    width: 250px;
+    height: 100%;
+    content: "sp";
+    position: fixed;
+    top: 0;
+    left: -260px;
+    -webkit-border-radius: 0;
+            border-radius: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+            box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+  .header .profile dl dt{
+    padding-left: 9px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .header .profile dl dt:before{
+    border: transparent solid 5px;
+    border-left: #3d3d3d solid 7px;
+  }
+  .header .profile dl dd{
+    margin-left: 9px;
+    font-size: 1.4rem;
+  }
+  .profile_btn{
+    left: 5px;
+    background-image: url(../img/sprite.png);
+    background-position: -843.5px -50px;
+    width: 50px;
+    height: 50px;
+    -webkit-background-size: 893.5px 843.5px;
+            background-size: 893.5px 843.5px;
+  }
+  .profile_back:before, .profile_back:after{
+    right: 15px;
+  }
+  .profile_back:before{
+    top: -1px;
+  }
+  .profile_back:after{
+    top: 20px;
+  }
+  .nav{
     width: 200px;
     top: 0;
     right: -260px;
     z-index: 2;
   }
-  .nav ul {
+  .nav ul{
     width: 200px;
   }
-  .nav ul li {
+  .nav ul li{
     margin: 0 0 1px;
     padding: 0 0 0 24px;
     width: 200px;
   }
-
-  .menu_btn {
+  .menu_btn{
     right: 5px;
     background-image: url(../img/sprite.png);
     background-position: -843.5px 0px;
@@ -402,14 +448,13 @@ The `sprites` mixin generates identical output to the CSS template
     -webkit-background-size: 893.5px 843.5px;
             background-size: 893.5px 843.5px;
   }
-
-  .menu_back:before, .menu_back:after {
+  .menu_back:before, .menu_back:after{
     left: -6px;
   }
-  .menu_back:before {
+  .menu_back:before{
     top: -1px;
   }
-  .menu_back:after {
+  .menu_back:after{
     top: 20px;
   }
 }
