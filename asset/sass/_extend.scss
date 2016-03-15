@@ -1,8 +1,12 @@
+%bablock {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
 %triangle {
     width: 0;
     height: 0;
-    content: "";
-    position: absolute;
     border-color: transparent;
     border-style: solid;
 }

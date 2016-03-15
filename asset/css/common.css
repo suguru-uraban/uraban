@@ -98,11 +98,15 @@ input, select {
   vertical-align: middle;
 }
 
-.content_body .content_section .content_list li .content_parts h3:before {
+.content_body .content_section .content_list > li .content_parts h3:before, .basic_list > li:before {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+.content_body .content_section .content_list > li .content_parts h3:before {
   width: 0;
   height: 0;
-  content: "";
-  position: absolute;
   border-color: transparent;
   border-style: solid;
 }
@@ -292,29 +296,49 @@ The `sprites` mixin generates identical output to the CSS template
 .content_body .content_section .content_list {
   margin-top: 10px;
 }
-.content_body .content_section .content_list li {
+.content_body .content_section .content_list > li {
   margin-left: 20px;
-  padding: 0 10px 0 30px;
+  padding: 0 10px 10px 30px;
   position: relative;
   border-bottom: #cccccc solid 1px;
 }
-.content_body .content_section .content_list li .content_parts h3 {
-  font-size: 18px;
-  font-size: 1.8rem;
-  line-height: 1.4;
+.content_body .content_section .content_list > li .content_parts h3 {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.8;
   position: relative;
 }
-.content_body .content_section .content_list li .content_parts h3:before {
-  top: 3px;
+.content_body .content_section .content_list > li .content_parts h3:before {
+  top: 4px;
   left: -16px;
   border-width: 8px;
 }
-.content_body .content_section .content_list li .content_parts h3.close:before {
+.content_body .content_section .content_list > li .content_parts h3.close:before {
   border-left: #cccccc solid 10px;
 }
 .content_body .content_section.intro h2 {
   border-left: #686868 solid 10px;
   border-bottom: #686868 solid 1px;
+}
+
+.basic_list {
+  padding: 0 0 0 20px;
+}
+.basic_list > li {
+  margin-top: 10px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  position: relative;
+}
+.basic_list > li:before {
+  width: 8px;
+  height: 8px;
+  top: 5px;
+  left: -16px;
+  -webkit-border-radius: 2px;
+          border-radius: 2px;
+  background: #dddddd;
 }
 @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px){
   .profile_btn, .menu_btn{

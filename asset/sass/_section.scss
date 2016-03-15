@@ -17,19 +17,20 @@
         }
         .content_list {
             margin-top: 10px;
-            li {
+            > li {
                 margin-left: 20px;
-                padding: 0 10px 0 30px;
+                padding: 0 10px 10px 30px;
                 position: relative;
                 border-bottom: $list_border_color solid 1px;
                 .content_parts {
                     h3 {
-                        font-size: 1.8rem;
-                        line-height: 1.4;
+                        font-size: 1.6rem;
+                        line-height: 1.8;
                         position: relative;
                         &:before {
+                            @extend %bablock;
                             @extend %triangle;
-                            top: 3px;
+                            top: 4px;
                             left: -16px;
                             border-width: 8px;
                         }
@@ -45,6 +46,25 @@
                 border-left: $nav_intro_color solid 10px;
                 border-bottom: $nav_intro_color solid 1px;
             }
+        }
+    }
+}
+
+.basic_list {
+    padding: 0 0 0 20px;
+    > li {
+        margin-top: 10px;
+        font-size: 1.4rem;
+        line-height: 1.4;
+        position: relative;
+        &:before {
+            @extend %bablock;
+            width: 8px;
+            height: 8px;
+            top: 5px;
+            left: -16px;
+            border-radius: 2px;
+            background: $list_basic_color;
         }
     }
 }
