@@ -11,6 +11,50 @@ $icon-home: x y offset_x offset_y width height total_width total_height image_pa
 At the bottom of this section, we provide information about the spritesheet itself
 $spritesheet: width height image $spritesheet-sprites;
 */
+$sprite-icon-biz-name: 'sprite-icon_biz';
+$sprite-icon-biz-x: 1687px;
+$sprite-icon-biz-y: 200px;
+$sprite-icon-biz-offset-x: -1687px;
+$sprite-icon-biz-offset-y: -200px;
+$sprite-icon-biz-width: 48px;
+$sprite-icon-biz-height: 48px;
+$sprite-icon-biz-total-width: 1787px;
+$sprite-icon-biz-total-height: 1687px;
+$sprite-icon-biz-image: '../img/sprite.png';
+$sprite-icon-biz: (1687px, 200px, -1687px, -200px, 48px, 48px, 1787px, 1687px, '../img/sprite.png', 'sprite-icon_biz', );
+$sprite-icon-intro-name: 'sprite-icon_intro';
+$sprite-icon-intro-x: 1735px;
+$sprite-icon-intro-y: 200px;
+$sprite-icon-intro-offset-x: -1735px;
+$sprite-icon-intro-offset-y: -200px;
+$sprite-icon-intro-width: 48px;
+$sprite-icon-intro-height: 48px;
+$sprite-icon-intro-total-width: 1787px;
+$sprite-icon-intro-total-height: 1687px;
+$sprite-icon-intro-image: '../img/sprite.png';
+$sprite-icon-intro: (1735px, 200px, -1735px, -200px, 48px, 48px, 1787px, 1687px, '../img/sprite.png', 'sprite-icon_intro', );
+$sprite-icon-other-name: 'sprite-icon_other';
+$sprite-icon-other-x: 1687px;
+$sprite-icon-other-y: 248px;
+$sprite-icon-other-offset-x: -1687px;
+$sprite-icon-other-offset-y: -248px;
+$sprite-icon-other-width: 48px;
+$sprite-icon-other-height: 48px;
+$sprite-icon-other-total-width: 1787px;
+$sprite-icon-other-total-height: 1687px;
+$sprite-icon-other-image: '../img/sprite.png';
+$sprite-icon-other: (1687px, 248px, -1687px, -248px, 48px, 48px, 1787px, 1687px, '../img/sprite.png', 'sprite-icon_other', );
+$sprite-icon-web-name: 'sprite-icon_web';
+$sprite-icon-web-x: 1735px;
+$sprite-icon-web-y: 248px;
+$sprite-icon-web-offset-x: -1735px;
+$sprite-icon-web-offset-y: -248px;
+$sprite-icon-web-width: 48px;
+$sprite-icon-web-height: 48px;
+$sprite-icon-web-total-width: 1787px;
+$sprite-icon-web-total-height: 1687px;
+$sprite-icon-web-image: '../img/sprite.png';
+$sprite-icon-web: (1735px, 248px, -1735px, -248px, 48px, 48px, 1787px, 1687px, '../img/sprite.png', 'sprite-icon_web', );
 $sprite-menu-name: 'sprite-menu';
 $sprite-menu-x: 1687px;
 $sprite-menu-y: 0px;
@@ -47,7 +91,7 @@ $sprite-twitterlogo: (0px, 0px, 0px, 0px, 1687px, 1687px, 1787px, 1687px, '../im
 $spritesheet-width: 1787px;
 $spritesheet-height: 1687px;
 $spritesheet-image: '../img/sprite.png';
-$spritesheet-sprites: ($sprite-menu, $sprite-profile, $sprite-twitterlogo, );
+$spritesheet-sprites: ($sprite-icon-biz, $sprite-icon-intro, $sprite-icon-other, $sprite-icon-web, $sprite-menu, $sprite-profile, $sprite-twitterlogo, );
 $spritesheet: (1787px, 1687px, '../img/sprite.png', $spritesheet-sprites, );
 
 
