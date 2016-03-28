@@ -5,6 +5,7 @@
 }
 
 %triangle {
+	@extend %bablock;
     width: 0;
     height: 0;
     border-color: transparent;

@@ -2,62 +2,63 @@
 @import "_extend";
 
 .header {
-    padding: 10px;
-    width: 200px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    width: 100%;
+    min-width: 1000px;
     box-sizing: border-box;
     background: $base_color;
-    h1 {
-        font-size: 1.8rem;
-        color: $header_text_color;
-        line-height: 1.4;
-        font-weight: bold;
-    }
-    .summary {
-        margin-top: 10px;
-        font-size: 1.0rem;
-        color: $header_text_color;
-        line-height: 1.4;
-    }
-    .profile {
-        margin-top: 10px;
+    .header_inner {
+        margin: 0 auto;
         padding: 10px;
-        content: "pc";
-        border-radius: 4px;
-        box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
-        background: $white_color;
-        img {
-            margin: 0 auto;
-            display: block;
+        width: 1000px;
+        box-sizing: border-box;
+        h1 {
+            font-size: 2.4rem;
+            color: $header_text_color;
+            line-height: 1.4;
+            font-weight: bold;
         }
-        dl {
+        .summary {
+            font-size: 1.4rem;
+            color: $header_text_color;
+            line-height: 1.4;
+        }
+        .profile {
             margin-top: 10px;
-            dt,dd {
-                color: $base_text_color;
-                line-height: 1.4;
+            padding: 10px;
+            content: "pc";
+            border-radius: 4px;
+            box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
+            background: $white_color;
+            img {
+                margin: 0 auto;
+                display: block;
             }
-            dt {
-                padding-left: 8px;
-                font-size: 1.3rem;
-                font-weight: bold;
-                position: relative;
-                &:before {
-                    width: 0;
-                    height: 0;
-                    content: "";
-                    position: absolute;
-                    top: 4px;
-                    left: 0;
-                    border: transparent solid 4px;
-                    border-left: $base_color solid 6px ;
+            dl {
+                margin-top: 10px;
+                dt,dd {
+                    color: $base_text_color;
+                    line-height: 1.4;
                 }
-            }
-            dd {
-                margin-left: 8px;
-                font-size: 1.2rem;
+                dt {
+                    padding-left: 8px;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    position: relative;
+                    &:before {
+                        width: 0;
+                        height: 0;
+                        content: "";
+                        position: absolute;
+                        top: 4px;
+                        left: 0;
+                        border: transparent solid 4px;
+                        border-left: $base_color solid 6px ;
+                    }
+                }
+                dd {
+                    margin-left: 8px;
+                    font-size: 1.2rem;
+                }
             }
         }
     }

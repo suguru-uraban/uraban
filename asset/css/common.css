@@ -27,6 +27,7 @@ html, body {
 
 body {
   line-height: 1;
+  color: #333333;
   font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
   background: #f3f3f3;
 }
@@ -53,7 +54,6 @@ q:before, q:after {
 a {
   margin: 0;
   padding: 0;
-  font-size: 62.5%;
   vertical-align: baseline;
   background: transparent;
 }
@@ -98,7 +98,7 @@ input, select {
   vertical-align: middle;
 }
 
-.content_body .content_section .content_list > li .content_parts h3:before, .basic_list > li:before {
+.content_body .content_section .content_list > li .content_parts h3:before, .nav ul li span:before, .basic_list > li:before {
   content: "";
   display: block;
   position: absolute;
@@ -150,31 +150,33 @@ The `sprites` mixin generates identical output to the CSS template
 @include sprites($spritesheet-sprites);
 */
 .header {
-  padding: 10px;
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
+  width: 100%;
+  min-width: 1000px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: #3d3d3d;
+  background: #00d7ca;
 }
-.header h1 {
-  font-size: 18px;
-  font-size: 1.8rem;
-  color: #ffffff;
+.header .header_inner {
+  margin: 0 auto;
+  padding: 10px;
+  width: 1000px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.header .header_inner h1 {
+  font-size: 24px;
+  font-size: 2.4rem;
+  color: #006767;
   line-height: 1.4;
   font-weight: bold;
 }
-.header .summary {
-  margin-top: 10px;
-  font-size: 10px;
-  font-size: 1.0rem;
-  color: #ffffff;
+.header .header_inner .summary {
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #006767;
   line-height: 1.4;
 }
-.header .profile {
+.header .header_inner .profile {
   margin-top: 10px;
   padding: 10px;
   content: "pc";
@@ -184,25 +186,25 @@ The `sprites` mixin generates identical output to the CSS template
           box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
   background: #ffffff;
 }
-.header .profile img {
+.header .header_inner .profile img {
   margin: 0 auto;
   display: block;
 }
-.header .profile dl {
+.header .header_inner .profile dl {
   margin-top: 10px;
 }
-.header .profile dl dt, .header .profile dl dd {
+.header .header_inner .profile dl dt, .header .header_inner .profile dl dd {
   color: #333333;
   line-height: 1.4;
 }
-.header .profile dl dt {
+.header .header_inner .profile dl dt {
   padding-left: 8px;
   font-size: 13px;
   font-size: 1.3rem;
   font-weight: bold;
   position: relative;
 }
-.header .profile dl dt:before {
+.header .header_inner .profile dl dt:before {
   width: 0;
   height: 0;
   content: "";
@@ -210,69 +212,85 @@ The `sprites` mixin generates identical output to the CSS template
   top: 4px;
   left: 0;
   border: transparent solid 4px;
-  border-left: #3d3d3d solid 6px;
+  border-left: #00d7ca solid 6px;
 }
-.header .profile dl dd {
+.header .header_inner .profile dl dd {
   margin-left: 8px;
   font-size: 12px;
   font-size: 1.2rem;
 }
 .nav {
-  width: 180px;
-  position: fixed;
-  top: 50px;
-  right: 0;
+  width: 100%;
+  min-width: 1000px;
+  border-top: #46e4e4 solid 1px;
+  border-bottom: #46e4e4 solid 1px;
+  background: #ffffff;
 }
 .nav ul {
-  width: 180px;
-  position: relative;
-  overflow: hidden;
+  margin: 0 auto;
+  width: 1000px;
+  height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .nav ul li {
-  margin: 0 0 10px;
-  padding: 0 0 0 24px;
-  width: 180px;
-  height: 40px;
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 22px;
-  position: relative;
-  left: 10px;
+  width: 25%;
+  height: 50px;
+  color: #188f8f;
+  line-height: 50px;
+  text-align: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
-  border-top: transparent solid 10px;
-  border-bottom: transparent solid 10px;
-  border-left-style: solid;
-  border-left-width: 5px;
-  background: #ffffff;
   cursor: pointer;
+  border-left: #46e4e4 solid 1px;
 }
-.nav ul li.intro {
-  border-left-color: #686868;
+.nav ul li:nth-last-child(1) {
+  border-right: #46e4e4 solid 1px;
 }
-.nav ul li.web {
-  border-left-color: #5a2b2b;
+.nav ul li span {
+  padding: 0 0 0 30px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  display: inline-block;
+  position: relative;
 }
-.nav ul li.biz {
-  border-left-color: #2b2e5a;
+.nav ul li span:before {
+  top: 12px;
+  left: 0;
 }
-.nav ul li:before {
-  margin: auto;
-  width: 6px;
-  height: 6px;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 10px;
-  border-top: #cccccc solid 2px;
-  border-left: #cccccc solid 2px;
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+.nav ul li.intro span:before {
+  background-image: url(../img/sprite.png);
+  background-position: -867.5px -100px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.web span:before {
+  background-image: url(../img/sprite.png);
+  background-position: -867.5px -124px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.biz span:before {
+  background-image: url(../img/sprite.png);
+  background-position: -843.5px -100px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.other span:before {
+  background-image: url(../img/sprite.png);
+  background-position: -843.5px -124px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
 }
 .content_body {
   margin: 0 190px 0 210px;
@@ -315,10 +333,6 @@ The `sprites` mixin generates identical output to the CSS template
 }
 .content_body .content_section .content_list > li .content_parts h3.close:before {
   border-left: #cccccc solid 10px;
-}
-.content_body .content_section.intro h2 {
-  border-left: #686868 solid 10px;
-  border-bottom: #686868 solid 1px;
 }
 
 .basic_list {
@@ -391,7 +405,7 @@ The `sprites` mixin generates identical output to the CSS template
     position: static;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    background: #3d3d3d;
+    background: #00d7ca;
   }
   .header h1{
     font-size: 1.8rem;
@@ -425,7 +439,7 @@ The `sprites` mixin generates identical output to the CSS template
   }
   .header .profile dl dt:before{
     border: transparent solid 5px;
-    border-left: #3d3d3d solid 7px;
+    border-left: #00d7ca solid 7px;
   }
   .header .profile dl dd{
     margin-left: 9px;
