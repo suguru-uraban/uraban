@@ -34,40 +34,48 @@
                     left: 0;
                 }
             }
-            &.intro span:before { @include sprite($sprite-icon-intro); }
-            &.web span:before { @include sprite($sprite-icon-web); }
-            &.biz span:before { @include sprite($sprite-icon-biz); }
-            &.other span:before { @include sprite($sprite-icon-other); }
+            &.intro span:before { @include sprite($sprite-icon-intro-off); }
+            &.web span:before { @include sprite($sprite-icon-web-off); }
+            &.biz span:before { @include sprite($sprite-icon-biz-off); }
+            &.other span:before { @include sprite($sprite-icon-other-off); }
         }
     }
 }
 @media only screen and (max-device-width: 640px),
 only screen and (max-device-width: 667px),
 only screen and (max-width: 480px) { 
-    @import "_extend";
     .nav {
-        width: 200px;
-        top: 0;
-        right: -260px;
-        z-index: 2;
+        width: 100%;
+        min-width: 0;
+        border-top: $nav_border_color solid 1px;
+        border-bottom: $nav_border_color solid 1px;
+        background: $white_color;
         ul {
-            width: 200px;
+            width: 100%;
+            height: 50px;
             li {
-                margin: 0 0 1px;
-                padding: 0 0 0 24px;
-                width: 200px;
+                height: 50px;
+                line-height: 1.4;
+                text-align: left;
+                display: table;
+                &:nth-child(1) {
+                    border-left: none;
+                }
+                &:nth-last-child(1) {
+                    border-right: none;
+                }
+                span {
+                    padding: 0 0 0 26px;
+                    font-size: 1.1rem;
+                    vertical-align: middle;
+                    display: table-cell;
+                    position: relative;
+                    &:before {
+                        top: 12px;
+                        left: 0;
+                    }
+                }
             }
         }
-    }
-    .menu_btn {
-        @extend %slide_btn;
-        right: 5px;
-        @include sprite($sprite-menu);
-    }
-    .menu_back {
-        @extend %slide_back;
-        &:before,&:after { left: -6px; }
-        &:before { top: -1px; }
-        &:after { top: 20px; }
     }
 }

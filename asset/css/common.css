@@ -176,10 +176,12 @@ The `sprites` mixin generates identical output to the CSS template
   color: #006767;
   line-height: 1.4;
 }
+.header .header_inner .sp_profile_button {
+  display: none;
+}
 .header .header_inner .profile {
   margin-top: 10px;
   padding: 10px;
-  content: "pc";
   -webkit-border-radius: 4px;
           border-radius: 4px;
   -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
@@ -262,7 +264,7 @@ The `sprites` mixin generates identical output to the CSS template
 }
 .nav ul li.intro span:before {
   background-image: url(../img/sprite.png);
-  background-position: -867.5px -100px;
+  background-position: -843.5px -172px;
   width: 24px;
   height: 24px;
   -webkit-background-size: 893.5px 843.5px;
@@ -278,7 +280,7 @@ The `sprites` mixin generates identical output to the CSS template
 }
 .nav ul li.biz span:before {
   background-image: url(../img/sprite.png);
-  background-position: -843.5px -100px;
+  background-position: -867.5px -148px;
   width: 24px;
   height: 24px;
   -webkit-background-size: 893.5px 843.5px;
@@ -286,7 +288,7 @@ The `sprites` mixin generates identical output to the CSS template
 }
 .nav ul li.other span:before {
   background-image: url(../img/sprite.png);
-  background-position: -843.5px -124px;
+  background-position: -867.5px -100px;
   width: 24px;
   height: 24px;
   -webkit-background-size: 893.5px 843.5px;
@@ -355,7 +357,7 @@ The `sprites` mixin generates identical output to the CSS template
   background: #dddddd;
 }
 @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px){
-  .profile_btn, .menu_btn{
+  .header .profile_btn{
     width: 50px;
     height: 50px;
     text-indent: -9999px;
@@ -367,7 +369,7 @@ The `sprites` mixin generates identical output to the CSS template
     cursor: pointer;
     background-color: rgba(61, 61, 61, 0.7);
   }
-  .profile_back, .menu_back{
+  .header .profile_back{
     width: 100%;
     height: 100%;
     text-indent: -9999px;
@@ -379,7 +381,7 @@ The `sprites` mixin generates identical output to the CSS template
     z-index: 1;
     cursor: pointer;
   }
-  .profile_back:before, .menu_back:before, .profile_back:after, .menu_back:after{
+  .header .profile_back:before, .header .profile_back:after{
     content: "";
     width: 30px;
     height: 30px;
@@ -388,39 +390,57 @@ The `sprites` mixin generates identical output to the CSS template
     position: absolute;
     border-right: #e3e3e3 solid 3px;
   }
-  .profile_back:before, .menu_back:before{
+  .header .profile_back:before{
     -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
   }
-  .profile_back:after, .menu_back:after{
+  .header .profile_back:after{
     -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
   }
   .header{
-    padding: 6px 60px;
+    min-width: 0;
+    background: none;
+  }
+  .header .header_inner{
+    padding: 0 0 4px;
     width: 100%;
-    height: 60px;
-    position: static;
+    background: #ffffff;
+  }
+  .header .header_inner h1{
+    padding: 0 8px;
+    width: 100%;
+    height: 48px;
+    font-size: 2.2rem;
+    line-height: 48px;
+    font-weight: bold;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     background: #00d7ca;
   }
-  .header h1{
-    font-size: 1.8rem;
-    line-height: 1.0;
+  .header .header_inner .summary{
+    margin: 4px 8px 0;
+    font-size: 1.2rem;
   }
-  .header .summary{
-    margin-top: 2px;
-    line-height: 1.2;
+  .header .header_inner .sp_profile_button{
+    width: 32px;
+    height: 32px;
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: #000000;
   }
-  .header .profile{
+  .header .header_inner .profile{
     margin-top: 0;
     padding: 20px 10px 0;
     width: 250px;
     height: 100%;
-    content: "sp";
     position: fixed;
     top: 0;
     left: -260px;
@@ -432,20 +452,20 @@ The `sprites` mixin generates identical output to the CSS template
             box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
     z-index: 2;
   }
-  .header .profile dl dt{
+  .header .header_inner .profile dl dt{
     padding-left: 9px;
     font-size: 1.5rem;
     font-weight: bold;
   }
-  .header .profile dl dt:before{
+  .header .header_inner .profile dl dt:before{
     border: transparent solid 5px;
     border-left: #00d7ca solid 7px;
   }
-  .header .profile dl dd{
+  .header .header_inner .profile dl dd{
     margin-left: 9px;
     font-size: 1.4rem;
   }
-  .profile_btn{
+  .header .profile_btn{
     left: 5px;
     background-image: url(../img/sprite.png);
     background-position: -843.5px -50px;
@@ -454,45 +474,47 @@ The `sprites` mixin generates identical output to the CSS template
     -webkit-background-size: 893.5px 843.5px;
             background-size: 893.5px 843.5px;
   }
-  .profile_back:before, .profile_back:after{
+  .header .profile_back:before, .header .profile_back:after{
     right: 15px;
   }
-  .profile_back:before{
+  .header .profile_back:before{
     top: -1px;
   }
-  .profile_back:after{
+  .header .profile_back:after{
     top: 20px;
   }
   .nav{
-    width: 200px;
-    top: 0;
-    right: -260px;
-    z-index: 2;
+    width: 100%;
+    min-width: 0;
+    border-top: #46e4e4 solid 1px;
+    border-bottom: #46e4e4 solid 1px;
+    background: #ffffff;
   }
   .nav ul{
-    width: 200px;
+    width: 100%;
+    height: 50px;
   }
   .nav ul li{
-    margin: 0 0 1px;
-    padding: 0 0 0 24px;
-    width: 200px;
-  }
-  .menu_btn{
-    right: 5px;
-    background-image: url(../img/sprite.png);
-    background-position: -843.5px 0px;
-    width: 50px;
     height: 50px;
-    -webkit-background-size: 893.5px 843.5px;
-            background-size: 893.5px 843.5px;
+    line-height: 1.4;
+    text-align: left;
+    display: table;
   }
-  .menu_back:before, .menu_back:after{
-    left: -6px;
+  .nav ul li:nth-child(1){
+    border-left: none;
   }
-  .menu_back:before{
-    top: -1px;
+  .nav ul li:nth-last-child(1){
+    border-right: none;
   }
-  .menu_back:after{
-    top: 20px;
+  .nav ul li span{
+    padding: 0 0 0 26px;
+    font-size: 1.1rem;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+  }
+  .nav ul li span:before{
+    top: 12px;
+    left: 0;
   }
 }
