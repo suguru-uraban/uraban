@@ -22,10 +22,12 @@
             color: $header_text_color;
             line-height: 1.4;
         }
+        .sp_profile_button {
+            display: none;
+        }
         .profile {
             margin-top: 10px;
             padding: 10px;
-            content: "pc";
             border-radius: 4px;
             box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
             background: $white_color;
@@ -68,59 +70,77 @@ only screen and (max-device-width: 667px),
 only screen and (max-width: 480px) {
     @import "_extend_sp";
     .header {
-        padding: 6px 60px;
-        width: 100%;
-        height: 60px;
-        position: static;
-        box-sizing: border-box;
-        background: $base_color;
-        h1 {
-            font-size: 1.8rem;
-            line-height: 1.0;
-        }
-        .summary {
-            margin-top: 2px;
-            line-height: 1.2;
-        }
-        .profile {
-            margin-top: 0;
-            padding: 20px 10px 0;
-            width: 250px;
-            height: 100%;
-            content: "sp";
-            position: fixed;
-            top: 0;
-            left: -260px;
-            border-radius: 0;
-            box-sizing: border-box;
-            box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
-            z-index: 2;
-            dl {
-                dt {
-                    padding-left: 9px;
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    &:before {
-                        border: transparent solid 5px;
-                        border-left: $base_color solid 7px ;
+        min-width: 0;
+        background: none;
+        .header_inner {
+            padding: 0 0 4px;
+            width: 100%;
+            background: $white_color;
+            h1 {
+                padding: 0 8px;
+                width: 100%;
+                height: 48px;
+                font-size: 2.2rem;
+                line-height: 48px;
+                font-weight: bold;
+                box-sizing: border-box;
+                background: $base_color;
+            }
+            .summary {
+                margin: 4px 8px 0;
+                font-size: 1.2rem;
+            }
+            .sp_profile_button {
+                width: 32px;
+                height: 32px;
+                display: block;
+                position: absolute;
+                top: 8px;
+                right: 12px;
+                overflow: hidden;
+                text-indent: 100%;
+                white-space: nowrap;
+                background: #000000;
+            }
+            .profile {
+                margin-top: 0;
+                padding: 20px 10px 0;
+                width: 250px;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: -260px;
+                border-radius: 0;
+                box-sizing: border-box;
+                box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
+                z-index: 2;
+                dl {
+                    dt {
+                        padding-left: 9px;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        &:before {
+                            border: transparent solid 5px;
+                            border-left: $base_color solid 7px ;
+                        }
                     }
-                }
-                dd {
-                    margin-left: 9px;
-                    font-size: 1.4rem;
+                    dd {
+                        margin-left: 9px;
+                        font-size: 1.4rem;
+                    }
                 }
             }
         }
-    }
-    .profile_btn {
-        @extend %slide_btn;
-        left: 5px;
-        @include sprite($sprite-profile);
-    }
-    .profile_back {
-        @extend %slide_back;
-        &:before,&:after { right: 15px; }
-        &:before { top: -1px; }
-        &:after { top: 20px; }
+        .profile_btn {
+            @extend %slide_btn;
+            left: 5px;
+            @include sprite($sprite-profile);
+        }
+        .profile_back {
+            @extend %slide_back;
+            &:before,&:after { right: 15px; }
+            &:before { top: -1px; }
+            &:after { top: 20px; }
+        }
     }
 }

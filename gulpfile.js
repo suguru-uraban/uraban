@@ -114,12 +114,22 @@ gulp.task('js', function(callback) {
 //HTMLの処理
 //------------------------------------------------------
 //ejs
-gulp.task('ejs', function() {
-    console.log('--------- ejsをHTMLに変換します ----------');
+gulp.task('ejsBuild', function() {
     return gulp.src([path.ejs + '**/*.ejs','!' + path.ejs + '**/_*.ejs'])
     .pipe(plumber())
     .pipe(ejs({}, {ext: '.html'}))
     .pipe(gulp.dest(path.root));
+});
+
+//エラーした場合ゴミejsを削除
+gulp.task('ejsClean', function () {
+    del([path.root + '**/*.ejs']);
+});
+
+//ejsの処理をまとめる
+gulp.task('ejs', function(callback) {
+    console.log('--------- ejsをHTMLに変換します ----------');
+    return runSequence('ejsBuild','ejsClean',callback);
 });
 
 //------------------------------------------------------

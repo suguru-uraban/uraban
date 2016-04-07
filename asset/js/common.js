@@ -1,79 +1,53 @@
+;(function($) {
+    //PCナビゲーションの処理
+    $.fn.pcNavHover = function() {
+        return this.each(function() {
+            var $this = $(this);
+            $this.off().on({
+                'mouseenter':function() {
+                    console.log('aaa');
+                },
+                'mouseleave':function() {
+                    console.log('bbb');
+                }
+            });
+        });
+    };
+
+    //SPナビゲーションの処理
+    $.fn.spNavClick = function() {
+        return this.each(function() {
+            var $this = $(this);
+            $this.off().on({
+                'mouseenter':function() {
+                    console.log('ccc');
+                },
+                'mouseleave':function() {
+                    console.log('ddd');
+                }
+            });
+        });
+    };
+})(jQuery);
+
 $(function() {
+    //変数格納
+    var $win = $(window),
+        $switch = $('.js-switch'),
+        $nav = $('.js-nav li'),
+        timer = false;
+
     //PCとSPの切り替え
-    function sizeSwitch() {
-        var client = $('.js-switch').css('content'),
-            $profileBtn = $('<div class="profile_btn js-profileBtn">プロフィール</div>'),
-            $menuBtn = $('<div class="menu_btn js-menuBtn">メニュー</div>'),
-            $profilePoint = $('.js-profileBtn'),
-            $menuPoint = $('.js-menuBtn');
-        if (client === '"sp"') {
-            //プロフィールボタンの設置
-            if((!$profilePoint.length) && (!$menuPoint.length)) {
-                $('.js-header').after($profileBtn).after($menuBtn);
-                $profileBtn.fadeIn(400, profileShow);
-                $menuBtn.fadeIn(400, menuShow);
-            }
-        } else {
-            $profilePoint.remove();
-            $menuPoint.remove();
+    $win.on('load resize', function() {
+        if (timer !== false) {
+            clearTimeout(timer);
         }
-    }
-    sizeSwitch();
-
-    //ウィンドウリサイズした場合の挙動
-    $(window).on('resize',function() {
-        sizeSwitch();
-    });
-
-    //プロフィールボタンの挙動
-    function profileShow() {
-        var $profileBack = $('<div class="profile_back js-back">閉じる</div>');
-        $('.js-profileBtn').on('click',function() {
-            $('.js-header').after($profileBack);
-            $('.js-back').fadeIn(100, sideHide);
-            $('.js-profile').css({
-                '-webkit-transform':'translate3d(260px,0,0)', 
-                '-webkit-transition':'-webkit-transform 100ms cubic-bezier(0,0,0.25,1)'
-            });
-        });
-    }
-
-    //メニューボタンの挙動
-    function menuShow() {
-        var $menuBack = $('<div class="menu_back js-back">閉じる</div>');
-        $('.js-menuBtn').on('click',function() {
-            $('.js-header').after($menuBack);
-            $('.js-back').fadeIn(100, sideHide);
-            $('.js-menu').css({
-                '-webkit-transform':'translate3d(-260px,0,0)', 
-                '-webkit-transition':'-webkit-transform 100ms cubic-bezier(0,0,0.25,1)'
-            });
-        });
-    }
-
-    //プロフィール、メニューを閉じる挙動
-    function sideHide() {
-        $('.js-back').on('click',function() {
-            $(this).fadeOut(300).queue(function () {
-                $(this).remove().dequeue();
-            });
-            if($(this).hasClass('profile_back')) {
-                $('.js-profile').css({
-                    '-webkit-transform':'translate3d(-260px,0,0)', 
-                    '-webkit-transition':'-webkit-transform 200ms cubic-bezier(0,0,0.25,1)'
-                });
-                setTimeout(function() {
-                    $('.js-profile').removeAttr('style');
-                }, 300);
-            } else if($(this).hasClass('menu_back')) {
-                $('.js-menu').css({
-                    '-webkit-transform':'translate3d(260px,0,0)', 
-                    '-webkit-transition':'-webkit-transform 200ms cubic-bezier(0,0,0.25,1)'
-                });
-                setTimeout(function() {
-                    $('.js-menu').removeAttr('style');
-                }, 300);
+        timer = setTimeout(function() {
+            if (!$switch.is(':visible')) {
+                $nav.pcNavHover();
+            } else {
+                $nav.spNavClick();
             }
-        });
-    }
+        }, 300);
+    });
 });
