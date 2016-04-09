@@ -70,7 +70,7 @@ only screen and (max-device-width: 667px),
 only screen and (max-width: 480px) {
     @import "_extend_sp";
     .header {
-        min-width: 0;
+        min-width: 320px;
         background: none;
         .header_inner {
             padding: 0 0 4px;

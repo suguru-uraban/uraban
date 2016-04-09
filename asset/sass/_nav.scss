@@ -23,6 +23,10 @@
             &:nth-last-child(1) {
                 border-right: $nav_border_color solid 1px;
             }
+            &.on {
+                color: $white_color;
+                background: $nav_border_color;
+            }
             span {
                 padding: 0 0 0 30px;
                 font-size: 1.6rem;
@@ -38,6 +42,10 @@
             &.web span:before { @include sprite($sprite-icon-web-off); }
             &.biz span:before { @include sprite($sprite-icon-biz-off); }
             &.other span:before { @include sprite($sprite-icon-other-off); }
+            &.intro span.on:before { @include sprite($sprite-icon-intro-on); }
+            &.web span.on:before { @include sprite($sprite-icon-web-on); }
+            &.biz span.on:before { @include sprite($sprite-icon-biz-on); }
+            &.other span.on:before { @include sprite($sprite-icon-other-on); }
         }
     }
 }
@@ -46,7 +54,7 @@ only screen and (max-device-width: 667px),
 only screen and (max-width: 480px) { 
     .nav {
         width: 100%;
-        min-width: 0;
+        min-width: 320px;
         border-top: $nav_border_color solid 1px;
         border-bottom: $nav_border_color solid 1px;
         background: $white_color;
@@ -55,9 +63,7 @@ only screen and (max-width: 480px) {
             height: 50px;
             li {
                 height: 50px;
-                line-height: 1.4;
-                text-align: left;
-                display: table;
+                line-height: 46px;
                 &:nth-child(1) {
                     border-left: none;
                 }
@@ -66,12 +72,17 @@ only screen and (max-width: 480px) {
                 }
                 span {
                     padding: 0 0 0 26px;
-                    font-size: 1.1rem;
+                    font-size: 1.0rem;
+                    line-height: 1.4;
+                    text-align: left;
+                    letter-spacing: -1px;
                     vertical-align: middle;
-                    display: table-cell;
+                    display: inline-block;
                     position: relative;
                     &:before {
-                        top: 12px;
+                        margin: auto;
+                        top: 0;
+                        bottom: 0;
                         left: 0;
                     }
                 }

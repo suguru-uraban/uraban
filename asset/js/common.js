@@ -1,14 +1,48 @@
 ;(function($) {
+    //プラグイン内で使う変数格納
+    var brText = 'あ',
+        keyTag = 'span';
+
     //PCナビゲーションの処理
     $.fn.pcNavHover = function() {
         return this.each(function() {
-            var $this = $(this);
+            var $this = $(this),
+                $navInnerTag = $this.find(keyTag),
+                navText = $navInnerTag.html();
+            //テキスト内にbrタグがあったら削除
+            if(navText.match(/<br>/)) {
+                navText = navText.replace(/<br>/,'');
+                $navInnerTag.html(navText);
+            }
+            //hover時の挙動
             $this.off().on({
                 'mouseenter':function() {
-                    console.log('aaa');
+                    $this.addClass('enter');
+                    $navInnerTag.addClass('before');
+                    setTimeout(function() {
+                        $navInnerTag.removeClass('before').addClass('after on');
+                    },190);
+                    setTimeout(function() {
+                        $this.addClass('on');
+                    },290);
+                    setTimeout(function() {
+                        $this.removeClass('enter');
+                        $navInnerTag.removeClass('after');
+                    },300);
                 },
                 'mouseleave':function() {
-                    console.log('bbb');
+                    $this.addClass('leave');
+                    $navInnerTag.addClass('before');
+                    setTimeout(function() {
+                        $navInnerTag.removeClass('before on').addClass('after');
+                    },190);
+                    setTimeout(function() {
+                        $this.removeClass('on');
+                    },290);
+                    setTimeout(function() {
+                        $this.removeClass('leave');
+                        $navInnerTag.removeClass('after');
+                    },300);
                 }
             });
         });
@@ -17,7 +51,15 @@
     //SPナビゲーションの処理
     $.fn.spNavClick = function() {
         return this.each(function() {
-            var $this = $(this);
+            var $this = $(this),
+                navText = $this.find(keyTag).html(),
+                keyText = brText;
+            //長いテキストをkeyTextの直前で改行
+            if(navText.match(keyText) && !navText.match(/<br>/)) {
+                navText = navText.replace(new RegExp('(' + keyText + ')'),'<br>$1');
+                $this.find(keyTag).html(navText);
+            }
+            //click時の挙動
             $this.off().on({
                 'mouseenter':function() {
                     console.log('ccc');
