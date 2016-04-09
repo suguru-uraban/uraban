@@ -149,6 +149,141 @@ The `sprites` mixin generates identical output to the CSS template
 
 @include sprites($spritesheet-sprites);
 */
+.before:before {
+  -webkit-animation: before 0.2s ease-in 0s 1 normal;
+          animation: before 0.2s ease-in 0s 1 normal;
+}
+
+.after:before {
+  -webkit-animation: after 0.1s ease-out 0s 1 normal;
+          animation: after 0.1s ease-out 0s 1 normal;
+}
+
+@-webkit-keyframes before {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  95% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+  }
+  100% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+  }
+}
+
+@keyframes before {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  95% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+  }
+  100% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+  }
+}
+@-webkit-keyframes after {
+  0% {
+    -webkit-transform: rotateY(270deg);
+            transform: rotateY(270deg);
+  }
+  95% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+@keyframes after {
+  0% {
+    -webkit-transform: rotateY(270deg);
+            transform: rotateY(270deg);
+  }
+  95% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+.enter {
+  -webkit-animation: enter 0.3s ease-in 0s 1 normal;
+          animation: enter 0.3s ease-in 0s 1 normal;
+}
+
+@-webkit-keyframes enter {
+  0% {
+    color: #188f8f;
+    background: #ffffff;
+  }
+  95% {
+    color: #ffffff;
+    background: #44b9b3;
+  }
+  100% {
+    color: #ffffff;
+    background: #44b9b3;
+  }
+}
+
+@keyframes enter {
+  0% {
+    color: #188f8f;
+    background: #ffffff;
+  }
+  95% {
+    color: #ffffff;
+    background: #44b9b3;
+  }
+  100% {
+    color: #ffffff;
+    background: #44b9b3;
+  }
+}
+.leave {
+  -webkit-animation: leave 0.3s ease-in 0s 1 normal;
+          animation: leave 0.3s ease-in 0s 1 normal;
+}
+
+@-webkit-keyframes leave {
+  0% {
+    color: #ffffff;
+    background: #188f8f;
+  }
+  95% {
+    color: #44b9b3;
+    background: #ffffff;
+  }
+  100% {
+    color: #44b9b3;
+    background: #ffffff;
+  }
+}
+
+@keyframes leave {
+  0% {
+    color: #ffffff;
+    background: #188f8f;
+  }
+  95% {
+    color: #44b9b3;
+    background: #ffffff;
+  }
+  100% {
+    color: #44b9b3;
+    background: #ffffff;
+  }
+}
 .header {
   width: 100%;
   min-width: 1000px;
@@ -224,8 +359,8 @@ The `sprites` mixin generates identical output to the CSS template
 .nav {
   width: 100%;
   min-width: 1000px;
-  border-top: #46e4e4 solid 1px;
-  border-bottom: #46e4e4 solid 1px;
+  border-top: #44b9b3 solid 1px;
+  border-bottom: #44b9b3 solid 1px;
   background: #ffffff;
 }
 .nav ul {
@@ -246,10 +381,14 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   cursor: pointer;
-  border-left: #46e4e4 solid 1px;
+  border-left: #44b9b3 solid 1px;
 }
 .nav ul li:nth-last-child(1) {
-  border-right: #46e4e4 solid 1px;
+  border-right: #44b9b3 solid 1px;
+}
+.nav ul li.on {
+  color: #ffffff;
+  background: #44b9b3;
 }
 .nav ul li span {
   padding: 0 0 0 30px;
@@ -289,6 +428,38 @@ The `sprites` mixin generates identical output to the CSS template
 .nav ul li.other span:before {
   background-image: url(../img/sprite.png);
   background-position: -867.5px -100px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.intro span.on:before {
+  background-image: url(../img/sprite.png);
+  background-position: -843.5px -100px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.web span.on:before {
+  background-image: url(../img/sprite.png);
+  background-position: -843.5px -148px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.biz span.on:before {
+  background-image: url(../img/sprite.png);
+  background-position: -843.5px -124px;
+  width: 24px;
+  height: 24px;
+  -webkit-background-size: 893.5px 843.5px;
+          background-size: 893.5px 843.5px;
+}
+.nav ul li.other span.on:before {
+  background-image: url(../img/sprite.png);
+  background-position: -867.5px -172px;
   width: 24px;
   height: 24px;
   -webkit-background-size: 893.5px 843.5px;
@@ -401,7 +572,7 @@ The `sprites` mixin generates identical output to the CSS template
             transform: rotate(-45deg);
   }
   .header{
-    min-width: 0;
+    min-width: 320px;
     background: none;
   }
   .header .header_inner{
@@ -485,9 +656,9 @@ The `sprites` mixin generates identical output to the CSS template
   }
   .nav{
     width: 100%;
-    min-width: 0;
-    border-top: #46e4e4 solid 1px;
-    border-bottom: #46e4e4 solid 1px;
+    min-width: 320px;
+    border-top: #44b9b3 solid 1px;
+    border-bottom: #44b9b3 solid 1px;
     background: #ffffff;
   }
   .nav ul{
@@ -496,9 +667,7 @@ The `sprites` mixin generates identical output to the CSS template
   }
   .nav ul li{
     height: 50px;
-    line-height: 1.4;
-    text-align: left;
-    display: table;
+    line-height: 46px;
   }
   .nav ul li:nth-child(1){
     border-left: none;
@@ -508,13 +677,18 @@ The `sprites` mixin generates identical output to the CSS template
   }
   .nav ul li span{
     padding: 0 0 0 26px;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
+    line-height: 1.4;
+    text-align: left;
+    letter-spacing: -1px;
     vertical-align: middle;
-    display: table-cell;
+    display: inline-block;
     position: relative;
   }
   .nav ul li span:before{
-    top: 12px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
     left: 0;
   }
 }
