@@ -4,10 +4,14 @@
 
 <% include common/_nav %>
 
-		<div class="content_body">
+    <div class="wrapper">
+        <main class="main">
+            <% include intro/_intro_top %>
+        </main>
 
-			<% include intro/_intro_top %>
-
-		</div>
+        <div class="side_content">
+            <% include common/_sidebar %>
+        </div>
+    </div>
 
 <% include common/_script %>

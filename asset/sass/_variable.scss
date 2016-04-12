@@ -4,19 +4,21 @@
 $body_color: #f3f3f3;
 $base_color: #00d7ca;
 $white_color: #ffffff;
-
-//ナビゲーションカラー
-$nav_normal_color: #188f8f;
-$nav_border_color: #44b9b3;
+$tree_color: #badbdb;
 
 //テキストカラー
 $base_text_color: #333333;
 $header_text_color: #006767;
 $back_text_color: #e3e3e3;
+$title_text_color: #188f8f;
+
+//ナビゲーションカラー
+$nav_normal_color: $title_text_color;
+$nav_border_color: #44b9b3;
 
 //リストマーカーカラー
 $list_basic_color: #dddddd;
 $list_arrow_color: #cccccc;
 
-//ボーダーカラー
-$list_border_color: #cccccc;
+//サイドカラー
+$side_background_color: $base_color;

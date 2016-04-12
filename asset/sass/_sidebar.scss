@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+.side_content {
+    margin-left: 8px;
+    width: 200px;
+    height: 100%;
+    float: left;
+    background: $side_background_color;
+    .profile {
+        margin: 8px 8px 0;
+        padding: 8px;
+        border-radius: 4px;
+        box-shadow: 3px 3px 1px rgba(0,0,0,0.6);
+        background: $white_color;
+        img {
+            margin: 0 auto;
+            display: block;
+        }
+        dl {
+            margin-top: 10px;
+            dt,dd {
+                color: $base_text_color;
+                line-height: 1.4;
+            }
+            dt {
+                font-size: 1.3rem;
+                font-weight: bold;
+                position: relative;
+            }
+            dd {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
