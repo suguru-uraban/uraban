@@ -1,3 +1,14 @@
+%cleafix {
+    *zoom: 1;
+    &:before,&:after {
+    	content: "";
+    	display: table;
+    }
+    &:after {
+    	clear: both;
+    }
+}
+
 %bablock {
     content: "";
     display: block;

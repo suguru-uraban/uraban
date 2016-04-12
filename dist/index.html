@@ -38,57 +38,69 @@
     </head>
     <body>
 
-        <header class="header js-header">
-            <div class="header_inner">
-                <h1>uraban.info</h1>
-                <p class="summary">フロントエンドエンジニア・うらばんのポートフォリオ兼実験場</p>
-                <div class="sp_profile_button js-switch">うらばんのプロフィール、スマホからはこちら</div>
-                <!--
-                <div class="profile js-switch js-profile">
-                    <img src="asset/img/main_image.png" width="100" height="100" alt="うらばん">
-                    <dl>
-                        <dt>プロフィール</dt>
-                        <dd>
-                            東京都在住の35歳<br>
-                            主に渋谷近辺のIT企業でHTML、CSS、JavaScriptをメインで扱うフロントエンドエンジニアとして働いています。<br>
-                            一人息子激ラブの親バカです。
-                        </dd>
-                    </dl>
-                </div>
-                -->
-            </div>
-        </header>
+    <header class="header js-header">
+        <div class="header_inner">
+            <h1>uraban.info</h1>
+            <p class="summary">フロントエンドエンジニア・うらばんのポートフォリオ兼実験場</p>
+            <div class="sp_profile_button js-switch">うらばんのプロフィール、スマホからはこちら</div>
+        </div>
+    </header>
 
-		<nav class="nav">
-		    <ul class="js-nav">
-		        <li class="intro"><span>自己紹介</span></li>
-		        <li class="web"><span>Web技術あれこれ</span></li>
-		        <li class="biz"><span>個人事業主あれこれ</span></li>
-		        <li class="other"><span>その他</span></li>
-		    </ul>
-		</nav>
+	<nav class="nav">
+	    <ul class="js-nav">
+	        <li class="intro"><span>自己紹介</span></li>
+	        <li class="web"><span>Web技術あれこれ</span></li>
+	        <li class="biz"><span>個人事業主あれこれ</span></li>
+	        <li class="other"><span>その他</span></li>
+	    </ul>
+	</nav>
 
-		<div class="content_body">
+    <div class="wrapper">
+        <main class="main">
+            <section class="content_section intro">
+    <h2>自己紹介</h2>
+    <ul class="content_list">
 
-			<section class="content_section intro">
-	<h2>自己紹介</h2>
-	<ul class="content_list">
+        <li>
+    <section class="content_body">
+        <h3 class="close">このサイトについて</h3>
+        <div class="content_parts">
+            <ul class="basic_list">
+                <li>このサイトはWebフロントエンドエンジニアとして活動しているハンドルネーム「うらばん」のポートフォリオサイト兼Web技術の実験場です。これまでやってきたことの紹介をはじめとして、これまで身につけたWeb技術や個人事業主としての情報を蓄積していきたいと思います。</li>
+                <li>PCとスマートフォン両方に対応していますが、Microsoftがサポート終了を宣言したInternet Explorer8以下のブラウザには対応しておりません。</li>
+                <li>フロントエンド環境はGulp、Sass、EJS。JavaScriptのライブラリはjQuery。サーバーはAmazon Web ServicesのS3とRoute53を利用しております。S3を使っているのと自分が専門外という理由から、サーバーサイドプログラムやデータベースの類は一切利用しておりません。</li>
+            </ul>
+        </div>
 
-		<li>
-	<section class="content_parts">
-		<h3 class="close">このサイトについて</h3>
-		<ul class="basic_list">
-			<li>このサイトはWebフロントエンドエンジニアとして活動しているハンドルネーム「うらばん」のポートフォリオサイト兼Web技術の実験場です。これまでやってきたことの紹介をはじめとして、これまで身につけたWeb技術や個人事業主としての情報を蓄積していきたいと思います。</li>
-			<li>PCとスマートフォン両方に対応していますが、Microsoftがサポート終了を宣言したInternet Explorer8以下のブラウザには対応しておりません。</li>
-			<li>フロントエンド環境はGulp、Sass、EJS。JavaScriptのライブラリはjQuery。サーバーはAmazon Web ServicesのS3とRoute53を利用しております。S3を使っているのと自分が専門外という理由から、サーバーサイドプログラムやデータベースの類は一切利用しておりません。</li>
-		</ul>
-	</section>
+        <h3 class="close">このサイトについて</h3>
+        <div class="content_parts">
+            <ul class="basic_list">
+                <li>このサイトはWebフロントエンドエンジニアとして活動しているハンドルネーム「うらばん」のポートフォリオサイト兼Web技術の実験場です。これまでやってきたことの紹介をはじめとして、これまで身につけたWeb技術や個人事業主としての情報を蓄積していきたいと思います。</li>
+                <li>PCとスマートフォン両方に対応していますが、Microsoftがサポート終了を宣言したInternet Explorer8以下のブラウザには対応しておりません。</li>
+                <li>フロントエンド環境はGulp、Sass、EJS。JavaScriptのライブラリはjQuery。サーバーはAmazon Web ServicesのS3とRoute53を利用しております。S3を使っているのと自分が専門外という理由から、サーバーサイドプログラムやデータベースの類は一切利用しておりません。</li>
+            </ul>
+        </div>
+    </section>
 </li>
 
-	</ul>
+    </ul>
 </section>
+        </main>
 
-		</div>
+        <div class="side_content">
+            <div class="profile">
+    <img src="asset/img/main_image.png" width="100" height="100" alt="うらばん">
+    <dl>
+        <dt>プロフィール</dt>
+        <dd>
+            東京都在住の35歳<br>
+            主に渋谷近辺のIT企業でHTML、CSS、JavaScriptをメインで扱うフロントエンドエンジニアとして働いています。<br>
+            一人息子激ラブの親バカです。
+        </dd>
+    </dl>
+</div>
+        </div>
+    </div>
 
         <script src="asset/lib/bower_components.min.js"></script>
         <script src="asset/js/common.min.js"></script>

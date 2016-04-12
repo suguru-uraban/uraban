@@ -17,31 +17,31 @@
             //hover時の挙動
             $this.off().on({
                 'mouseenter':function() {
-                    $this.addClass('enter');
-                    $navInnerTag.addClass('before');
+                    $this.addClass('navEnter');
+                    $navInnerTag.addClass('navBefore');
                     setTimeout(function() {
-                        $navInnerTag.removeClass('before').addClass('after on');
+                        $navInnerTag.removeClass('navBefore').addClass('navAfter on');
                     },190);
                     setTimeout(function() {
                         $this.addClass('on');
                     },290);
                     setTimeout(function() {
-                        $this.removeClass('enter');
-                        $navInnerTag.removeClass('after');
+                        $this.removeClass('navEnter');
+                        $navInnerTag.removeClass('navAfter');
                     },300);
                 },
                 'mouseleave':function() {
-                    $this.addClass('leave');
-                    $navInnerTag.addClass('before');
+                    $this.addClass('navLeave');
+                    $navInnerTag.addClass('navBefore');
                     setTimeout(function() {
-                        $navInnerTag.removeClass('before on').addClass('after');
+                        $navInnerTag.removeClass('navBefore on').addClass('navAfter');
                     },190);
                     setTimeout(function() {
                         $this.removeClass('on');
                     },290);
                     setTimeout(function() {
-                        $this.removeClass('leave');
-                        $navInnerTag.removeClass('after');
+                        $this.removeClass('navLeave');
+                        $navInnerTag.removeClass('navAfter');
                     },300);
                 }
             });

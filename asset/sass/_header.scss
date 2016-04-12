@@ -6,9 +6,11 @@
     min-width: 1000px;
     box-sizing: border-box;
     background: $base_color;
+    position: relative;
+    z-index: 1;
     .header_inner {
         margin: 0 auto;
-        padding: 10px;
+        padding: 8px;
         width: 1000px;
         box-sizing: border-box;
         h1 {
@@ -24,44 +26,6 @@
         }
         .sp_profile_button {
             display: none;
-        }
-        .profile {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
-            background: $white_color;
-            img {
-                margin: 0 auto;
-                display: block;
-            }
-            dl {
-                margin-top: 10px;
-                dt,dd {
-                    color: $base_text_color;
-                    line-height: 1.4;
-                }
-                dt {
-                    padding-left: 8px;
-                    font-size: 1.3rem;
-                    font-weight: bold;
-                    position: relative;
-                    &:before {
-                        width: 0;
-                        height: 0;
-                        content: "";
-                        position: absolute;
-                        top: 4px;
-                        left: 0;
-                        border: transparent solid 4px;
-                        border-left: $base_color solid 6px ;
-                    }
-                }
-                dd {
-                    margin-left: 8px;
-                    font-size: 1.2rem;
-                }
-            }
         }
     }
 }
