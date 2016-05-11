@@ -28,7 +28,7 @@
         display: block;
         text-indent: -9999px;
         position: absolute;
-        border-right: $back_text_color solid 3px;
+        border-right: #000000 solid 3px;
     }
     &:before { transform: rotate(45deg); }
     &:after { transform: rotate(-45deg); }

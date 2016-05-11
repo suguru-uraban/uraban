@@ -6,42 +6,31 @@
     //PCナビゲーションの処理
     $.fn.pcNavHover = function() {
         return this.each(function() {
-            var $this = $(this),
-                $navInnerTag = $this.find(keyTag),
-                navText = $navInnerTag.html();
-            //テキスト内にbrタグがあったら削除
-            if(navText.match(/<br>/)) {
-                navText = navText.replace(/<br>/,'');
-                $navInnerTag.html(navText);
-            }
+            var $this = $(this);
             //hover時の挙動
             $this.off().on({
                 'mouseenter':function() {
-                    $this.addClass('navEnter');
-                    $navInnerTag.addClass('navBefore');
+                    $this.addClass('navEnter navBefore');
                     setTimeout(function() {
-                        $navInnerTag.removeClass('navBefore').addClass('navAfter on');
+                        $this.removeClass('navBefore').addClass('navAfter on');
                     },190);
                     setTimeout(function() {
                         $this.addClass('on');
                     },290);
                     setTimeout(function() {
-                        $this.removeClass('navEnter');
-                        $navInnerTag.removeClass('navAfter');
+                        $this.removeClass('navEnter navAfter');
                     },300);
                 },
                 'mouseleave':function() {
-                    $this.addClass('navLeave');
-                    $navInnerTag.addClass('navBefore');
+                    $this.addClass('navLeave navBefore');
                     setTimeout(function() {
-                        $navInnerTag.removeClass('navBefore on').addClass('navAfter');
+                        $this.removeClass('navBefore on').addClass('navAfter');
                     },190);
                     setTimeout(function() {
                         $this.removeClass('on');
                     },290);
                     setTimeout(function() {
-                        $this.removeClass('navLeave');
-                        $navInnerTag.removeClass('navAfter');
+                        $this.removeClass('navLeave navAfter');
                     },300);
                 }
             });

@@ -20,16 +20,16 @@
 
 @keyframes navEnter {
     0%{
-        color: $nav_normal_color;
-        background: $white_color;
+        color: $nav_normal_text_color;
+        background: $nav_normal_color;
     }
     95%{
-        color: $white_color;
-        background: $nav_border_color;
+        color: $nav_hover_text_color;
+        background: $nav_hover_color;
     }
     100%{
-        color: $white_color;
-        background: $nav_border_color;
+        color: $nav_hover_text_color;
+        background: $nav_hover_color;
     }
 }
 
@@ -37,15 +37,15 @@
 
 @keyframes navLeave {
     0%{
-        color: $white_color;
-        background: $nav_normal_color;
+        color: $nav_hover_text_color;
+        background: $nav_hover_color;
     }
     95%{
-        color: $nav_border_color;
-        background: $white_color;
+        color: $nav_normal_text_color;
+        background: $nav_normal_color;
     }
     100%{
-        color: $nav_border_color;
-        background: $white_color;
+        color: $nav_normal_text_color;
+        background: $nav_normal_color;
     }
 }

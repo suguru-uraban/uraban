@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.profile {
+    padding: 8px;
+    border-radius: 6px;
+    //box-shadow: 3px 3px 1px rgba(0,0,0,0.6);
+    background: $profile_back_color;
+    img {
+        margin: 0 auto;
+        display: block;
+    }
+    dl {
+        margin-top: 10px;
+        dt,dd {
+            color: $base_text_color;
+            line-height: 1.4;
+        }
+        dt {
+            font-size: 1.3rem;
+            font-weight: bold;
+            position: relative;
+        }
+        dd {
+            font-size: 1.2rem;
+        }
+    }
+}

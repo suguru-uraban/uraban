@@ -5,27 +5,70 @@
     width: 100%;
     min-width: 1000px;
     box-sizing: border-box;
-    background: $base_color;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: $base_color solid 32px;
+    background: $body_color;
     z-index: 1;
     .header_inner {
         margin: 0 auto;
-        padding: 8px;
+        padding: 8px 8px 8px 32px;
         width: 1000px;
+        position: relative;
         box-sizing: border-box;
+        &:before {
+            @extend %bablock;
+            width: 500px;
+            height: 650px;
+            top: 100px;
+            left: 0;
+            background: url("../img/fixed_img01.jpg") no-repeat left top;
+            background-size: 500px 650px;
+        }
         h1 {
             font-size: 2.4rem;
-            color: $header_text_color;
+            color: $base_text_color;
             line-height: 1.4;
             font-weight: bold;
+            position: relative;
+            &:before {
+                @extend %bablock;
+                margin: auto;
+                width: 25px;
+                height: 25px;
+                top: 0;
+                bottom: 0;
+                left: -32px;
+                box-sizing: border-box;
+                border-radius: 25px;
+                border: $tree_color solid 5px;
+                background: $white_color;
+                z-index: 2;
+            }
+            &:after {
+                @extend %bablock;
+                width: 5px;
+                height: 130px;
+                top: 18px;
+                left: -22px;
+                background: $tree_color;
+                z-index: 1;
+            }
         }
         .summary {
             font-size: 1.4rem;
-            color: $header_text_color;
+            color: $base_text_color;
             line-height: 1.4;
         }
         .sp_profile_button {
             display: none;
+        }
+        .fixed_bar {
+            width: 200px;
+            position: absolute;
+            top: 108px;
+            left: 32px;
         }
     }
 }
