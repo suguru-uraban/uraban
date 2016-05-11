@@ -1,20 +1,22 @@
 @charset "utf-8";
 
 //ベースカラー
-$body_color: #f3f3f3;
-$base_color: #00d7ca;
+$body_color: #fefefe;
+$base_color: #333333;
 $white_color: #ffffff;
-$tree_color: #badbdb;
+$tree_color: #dfd000;
 
 //テキストカラー
 $base_text_color: #333333;
-$header_text_color: #006767;
-$back_text_color: #e3e3e3;
-$title_text_color: #188f8f;
 
 //ナビゲーションカラー
-$nav_normal_color: $title_text_color;
-$nav_border_color: #44b9b3;
+$nav_normal_color: rgba(255,255,255,0.9);
+$nav_normal_text_color: $tree_color;
+$nav_hover_color: rgba(223,208,0,0.9);
+$nav_hover_text_color: $white_color;
+
+//プロフィールカラー
+$profile_back_color: rgba(255,255,255,0.7);
 
 //リストマーカーカラー
 $list_basic_color: #dddddd;

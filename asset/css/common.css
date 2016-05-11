@@ -31,7 +31,7 @@ body {
   line-height: 1;
   color: #333333;
   font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
-  background: #f3f3f3;
+  background: #fefefe;
 }
 
 article, aside, details, figcaption, figure,
@@ -111,7 +111,7 @@ input, select {
   clear: both;
 }
 
-.nav ul li span:before, .wrapper .main .content_section h2:after, .wrapper .main .content_section h2:before, .wrapper .main .content_list:before, .wrapper .main .content_list > li:before, .wrapper .main .content_list > li .content_body h3:before, .wrapper .main .content_list > li .content_body h3:after, .wrapper .main .content_list > li .content_body .content_parts:before, .wrapper .main .content_list > li .content_body .content_parts:after, .basic_list > li:before, .basic_list > li:after {
+.header .header_inner:before, .header .header_inner h1:before, .header .header_inner h1:after, .nav:before, .nav ul li:before, .wrapper .main .content_section h2:after, .wrapper .main .content_section h2:before, .wrapper .main .content_list:before, .wrapper .main .content_list > li:before, .wrapper .main .content_list > li .content_body h3:before, .wrapper .main .content_list > li .content_body h3:after, .wrapper .main .content_list > li .content_body .content_parts:before, .wrapper .main .content_list > li .content_body .content_parts:after, .basic_list > li:before, .basic_list > li:after {
   content: "";
   display: block;
   position: absolute;
@@ -229,31 +229,31 @@ The `sprites` mixin generates identical output to the CSS template
 
 @-webkit-keyframes navEnter {
   0% {
-    color: #188f8f;
-    background: #ffffff;
+    color: #dfd000;
+    background: rgba(255, 255, 255, 0.9);
   }
   95% {
     color: #ffffff;
-    background: #44b9b3;
+    background: rgba(223, 208, 0, 0.9);
   }
   100% {
     color: #ffffff;
-    background: #44b9b3;
+    background: rgba(223, 208, 0, 0.9);
   }
 }
 
 @keyframes navEnter {
   0% {
-    color: #188f8f;
-    background: #ffffff;
+    color: #dfd000;
+    background: rgba(255, 255, 255, 0.9);
   }
   95% {
     color: #ffffff;
-    background: #44b9b3;
+    background: rgba(223, 208, 0, 0.9);
   }
   100% {
     color: #ffffff;
-    background: #44b9b3;
+    background: rgba(223, 208, 0, 0.9);
   }
 }
 .navLeave {
@@ -264,30 +264,30 @@ The `sprites` mixin generates identical output to the CSS template
 @-webkit-keyframes navLeave {
   0% {
     color: #ffffff;
-    background: #188f8f;
+    background: rgba(223, 208, 0, 0.9);
   }
   95% {
-    color: #44b9b3;
-    background: #ffffff;
+    color: #dfd000;
+    background: rgba(255, 255, 255, 0.9);
   }
   100% {
-    color: #44b9b3;
-    background: #ffffff;
+    color: #dfd000;
+    background: rgba(255, 255, 255, 0.9);
   }
 }
 
 @keyframes navLeave {
   0% {
     color: #ffffff;
-    background: #188f8f;
+    background: rgba(223, 208, 0, 0.9);
   }
   95% {
-    color: #44b9b3;
-    background: #ffffff;
+    color: #dfd000;
+    background: rgba(255, 255, 255, 0.9);
   }
   100% {
-    color: #44b9b3;
-    background: #ffffff;
+    color: #dfd000;
+    background: rgba(255, 255, 255, 0.9);
   }
 }
 .header {
@@ -295,81 +295,132 @@ The `sprites` mixin generates identical output to the CSS template
   min-width: 1000px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: #00d7ca;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: #333333 solid 32px;
+  background: #fefefe;
   z-index: 1;
 }
 .header .header_inner {
   margin: 0 auto;
-  padding: 8px;
+  padding: 8px 8px 8px 32px;
   width: 1000px;
+  position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+.header .header_inner:before {
+  width: 500px;
+  height: 650px;
+  top: 100px;
+  left: 0;
+  background: url("../img/fixed_img01.jpg") no-repeat left top;
+  -webkit-background-size: 500px 650px;
+          background-size: 500px 650px;
 }
 .header .header_inner h1 {
   font-size: 24px;
   font-size: 2.4rem;
-  color: #006767;
+  color: #333333;
   line-height: 1.4;
   font-weight: bold;
+  position: relative;
+}
+.header .header_inner h1:before {
+  margin: auto;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  bottom: 0;
+  left: -32px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-border-radius: 25px;
+          border-radius: 25px;
+  border: #dfd000 solid 5px;
+  background: #ffffff;
+  z-index: 2;
+}
+.header .header_inner h1:after {
+  width: 5px;
+  height: 130px;
+  top: 18px;
+  left: -22px;
+  background: #dfd000;
+  z-index: 1;
 }
 .header .header_inner .summary {
   font-size: 14px;
   font-size: 1.4rem;
-  color: #006767;
+  color: #333333;
   line-height: 1.4;
 }
 .header .header_inner .sp_profile_button {
   display: none;
 }
+.header .header_inner .fixed_bar {
+  width: 200px;
+  position: absolute;
+  top: 108px;
+  left: 32px;
+}
 .nav {
+  margin-bottom: 16px;
   width: 100%;
-  min-width: 1000px;
   position: relative;
-  border-top: #44b9b3 solid 1px;
-  border-bottom: #44b9b3 solid 1px;
-  background: #ffffff;
   z-index: 1;
+}
+.nav:before {
+  width: 22px;
+  height: 5px;
+  top: 48px;
+  left: -22px;
+  background: #dfd000;
 }
 .nav ul {
   margin: 0 auto;
-  width: 1000px;
-  height: 50px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-border-radius: 6px;
+          border-radius: 6px;
+  border: #dfd000 solid 3px;
 }
 .nav ul li {
-  width: 25%;
-  height: 50px;
-  color: #188f8f;
-  line-height: 50px;
-  text-align: center;
+  padding-left: 40px;
+  height: 40px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #dfd000;
+  line-height: 40px;
+  position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   cursor: pointer;
-  border-left: #44b9b3 solid 1px;
+  border-bottom: rgba(223, 208, 0, 0.9) solid 1px;
+  background: rgba(255, 255, 255, 0.9);
+}
+.nav ul li:nth-child(1) {
+  -webkit-border-radius: 2px 2px 0 0;
+          border-radius: 2px 2px 0 0;
 }
 .nav ul li:nth-last-child(1) {
-  border-right: #44b9b3 solid 1px;
+  -webkit-border-radius: 0 0 2px 2px;
+          border-radius: 0 0 2px 2px;
+  border-bottom: none;
+}
+.nav ul li:only-child {
+  -webkit-border-radius: 2px;
+          border-radius: 2px;
+  border-bottom: none;
 }
 .nav ul li.on {
   color: #ffffff;
-  background: #44b9b3;
+  background: rgba(223, 208, 0, 0.9);
 }
-.nav ul li span {
-  padding: 0 0 0 30px;
-  font-size: 16px;
-  font-size: 1.6rem;
-  display: inline-block;
-  position: relative;
+.nav ul li:before {
+  top: 8px;
+  left: 8px;
 }
-.nav ul li span:before {
-  top: 12px;
-  left: 0;
-}
-.nav ul li.intro span:before {
+.nav ul li.intro:before {
   background-image: url(../img/sprite.png);
   background-position: -843.5px -172px;
   width: 24px;
@@ -377,7 +428,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.web span:before {
+.nav ul li.web:before {
   background-image: url(../img/sprite.png);
   background-position: -867.5px -124px;
   width: 24px;
@@ -385,7 +436,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.biz span:before {
+.nav ul li.biz:before {
   background-image: url(../img/sprite.png);
   background-position: -867.5px -148px;
   width: 24px;
@@ -393,7 +444,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.other span:before {
+.nav ul li.other:before {
   background-image: url(../img/sprite.png);
   background-position: -867.5px -100px;
   width: 24px;
@@ -401,7 +452,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.intro span.on:before {
+.nav ul li.intro.on:before {
   background-image: url(../img/sprite.png);
   background-position: -843.5px -100px;
   width: 24px;
@@ -409,7 +460,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.web span.on:before {
+.nav ul li.web.on:before {
   background-image: url(../img/sprite.png);
   background-position: -843.5px -148px;
   width: 24px;
@@ -417,7 +468,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.biz span.on:before {
+.nav ul li.biz.on:before {
   background-image: url(../img/sprite.png);
   background-position: -843.5px -124px;
   width: 24px;
@@ -425,7 +476,7 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
-.nav ul li.other span.on:before {
+.nav ul li.other.on:before {
   background-image: url(../img/sprite.png);
   background-position: -867.5px -172px;
   width: 24px;
@@ -433,6 +484,34 @@ The `sprites` mixin generates identical output to the CSS template
   -webkit-background-size: 893.5px 843.5px;
           background-size: 893.5px 843.5px;
 }
+.profile {
+  padding: 8px;
+  -webkit-border-radius: 6px;
+          border-radius: 6px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.profile img {
+  margin: 0 auto;
+  display: block;
+}
+.profile dl {
+  margin-top: 10px;
+}
+.profile dl dt, .profile dl dd {
+  color: #333333;
+  line-height: 1.4;
+}
+.profile dl dt {
+  font-size: 13px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: relative;
+}
+.profile dl dd {
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+
 .wrapper {
   margin: 0 auto;
   padding-top: 120px;
@@ -463,11 +542,11 @@ The `sprites` mixin generates identical output to the CSS template
   padding-left: 36px;
   font-size: 20px;
   font-size: 2rem;
-  color: #188f8f;
+  color: #333333;
   line-height: 1.4;
   font-weight: bold;
   position: relative;
-  border-bottom: #badbdb solid 3px;
+  border-bottom: #dfd000 solid 3px;
 }
 .wrapper .main .content_section h2:after {
   width: 24px;
@@ -476,14 +555,14 @@ The `sprites` mixin generates identical output to the CSS template
   left: 0;
   -webkit-border-radius: 0 0 24px 24px;
           border-radius: 0 0 24px 24px;
-  border: #badbdb solid 3px;
+  border: #dfd000 solid 3px;
   border-top: none;
   background: #ffffff;
   z-index: 1;
 }
 .wrapper .main .content_section h2:before {
   top: 1px;
-  left: 3px;
+  left: 4px;
   z-index: 2;
 }
 .wrapper .main .content_section.intro h2:before {
@@ -498,7 +577,7 @@ The `sprites` mixin generates identical output to the CSS template
   margin-left: 14px;
   padding-top: 24px;
   position: relative;
-  border-left: #badbdb solid 2px;
+  border-left: #dfd000 solid 2px;
 }
 .wrapper .main .content_list:before {
   margin: auto;
@@ -506,8 +585,8 @@ The `sprites` mixin generates identical output to the CSS template
   height: 3px;
   top: -3px;
   left: 0;
-  background: -webkit-gradient(linear, left top, right top, from(#badbdb), color-stop(8%, #badbdb), to(#ffffff));
-  background: linear-gradient(to right, #badbdb, #badbdb 8%, #ffffff);
+  background: -webkit-gradient(linear, left top, right top, from(#dfd000), color-stop(8%, #dfd000), to(#ffffff));
+  background: linear-gradient(to right, #dfd000, #dfd000 8%, #ffffff);
 }
 .wrapper .main .content_list > li {
   margin-left: 16px;
@@ -519,8 +598,8 @@ The `sprites` mixin generates identical output to the CSS template
   height: 16px;
   bottom: 0;
   left: -18px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#badbdb), to(#ffffff));
-  background: linear-gradient(to bottom, #badbdb, #ffffff);
+  background: -webkit-gradient(linear, left top, left bottom, from(#dfd000), to(#ffffff));
+  background: linear-gradient(to bottom, #dfd000, #ffffff);
 }
 .wrapper .main .content_list > li .content_body h3 {
   padding-left: 16px;
@@ -534,7 +613,7 @@ The `sprites` mixin generates identical output to the CSS template
   height: 2px;
   top: 9px;
   left: -16px;
-  background: #badbdb;
+  background: #dfd000;
 }
 .wrapper .main .content_list > li .content_body h3:after {
   width: 8px;
@@ -543,7 +622,7 @@ The `sprites` mixin generates identical output to the CSS template
   left: 0;
   -webkit-border-radius: 12px;
           border-radius: 12px;
-  border: #badbdb solid 2px;
+  border: #dfd000 solid 2px;
   background: #ffffff;
   z-index: 1;
 }
@@ -551,22 +630,22 @@ The `sprites` mixin generates identical output to the CSS template
   margin-left: 5px;
   padding: 8px 0 16px;
   position: relative;
-  border-left: #badbdb solid 1px;
+  border-left: #dfd000 solid 1px;
 }
 .wrapper .main .content_list > li .content_body .content_parts:before {
   width: 1px;
   height: 8px;
   top: -8px;
   left: -1px;
-  background: #badbdb;
+  background: #dfd000;
 }
 .wrapper .main .content_list > li .content_body .content_parts:after {
   width: 1px;
   height: 16px;
   bottom: 0;
   left: -1px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#badbdb), to(#ffffff));
-  background: linear-gradient(to bottom, #badbdb, #ffffff);
+  background: -webkit-gradient(linear, left top, left bottom, from(#dfd000), to(#ffffff));
+  background: linear-gradient(to bottom, #dfd000, #ffffff);
 }
 
 .basic_list {
@@ -587,7 +666,7 @@ The `sprites` mixin generates identical output to the CSS template
   height: 1px;
   top: 9px;
   left: -24px;
-  background: #badbdb;
+  background: #dfd000;
 }
 .basic_list > li:after {
   width: 5px;
@@ -596,47 +675,9 @@ The `sprites` mixin generates identical output to the CSS template
   left: -12px;
   -webkit-border-radius: 12px;
           border-radius: 12px;
-  border: #badbdb solid 1px;
+  border: #dfd000 solid 1px;
   background: #ffffff;
   z-index: 1;
-}
-
-.side_content {
-  margin-left: 8px;
-  width: 200px;
-  height: 100%;
-  float: left;
-  background: #00d7ca;
-}
-.side_content .profile {
-  margin: 8px 8px 0;
-  padding: 8px;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-  -webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.6);
-          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.6);
-  background: #ffffff;
-}
-.side_content .profile img {
-  margin: 0 auto;
-  display: block;
-}
-.side_content .profile dl {
-  margin-top: 10px;
-}
-.side_content .profile dl dt, .side_content .profile dl dd {
-  color: #333333;
-  line-height: 1.4;
-}
-.side_content .profile dl dt {
-  font-size: 13px;
-  font-size: 1.3rem;
-  font-weight: bold;
-  position: relative;
-}
-.side_content .profile dl dd {
-  font-size: 12px;
-  font-size: 1.2rem;
 }
 @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px){
   .header .profile_btn{
@@ -670,7 +711,7 @@ The `sprites` mixin generates identical output to the CSS template
     display: block;
     text-indent: -9999px;
     position: absolute;
-    border-right: #e3e3e3 solid 3px;
+    border-right: #000000 solid 3px;
   }
   .header .profile_back:before{
     -webkit-transform: rotate(45deg);
@@ -700,7 +741,7 @@ The `sprites` mixin generates identical output to the CSS template
     font-weight: bold;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    background: #00d7ca;
+    background: #333333;
   }
   .header .header_inner .summary{
     margin: 4px 8px 0;
@@ -741,7 +782,7 @@ The `sprites` mixin generates identical output to the CSS template
   }
   .header .header_inner .profile dl dt:before{
     border: transparent solid 5px;
-    border-left: #00d7ca solid 7px;
+    border-left: #333333 solid 7px;
   }
   .header .header_inner .profile dl dd{
     margin-left: 9px;
@@ -768,9 +809,6 @@ The `sprites` mixin generates identical output to the CSS template
   .nav{
     width: 100%;
     min-width: 320px;
-    border-top: #44b9b3 solid 1px;
-    border-bottom: #44b9b3 solid 1px;
-    background: #ffffff;
   }
   .nav ul{
     width: 100%;
