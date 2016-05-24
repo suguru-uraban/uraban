@@ -10,22 +10,14 @@
     left: 0;
     border-bottom: $base_color solid 32px;
     background: $body_color;
-    z-index: 1;
+    box-shadow: 0 3px 3px $shadow_color;
+    z-index: 2;
     .header_inner {
         margin: 0 auto;
         padding: 8px 8px 8px 32px;
         width: 1000px;
         position: relative;
         box-sizing: border-box;
-        &:before {
-            @extend %bablock;
-            width: 500px;
-            height: 650px;
-            top: 100px;
-            left: 0;
-            background: url("../img/fixed_img01.jpg") no-repeat left top;
-            background-size: 500px 650px;
-        }
         h1 {
             font-size: 2.4rem;
             color: $base_text_color;

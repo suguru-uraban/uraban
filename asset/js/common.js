@@ -1,7 +1,9 @@
 ;(function($) {
-    //プラグイン内で使う変数格納
-    var brText = 'あ',
-        keyTag = 'span';
+    //変数格納
+    var $win = $(window),
+        $switch = $('.js-switch'),
+        $nav = $('.js-nav li'),
+        timer = false;
 
     //PCナビゲーションの処理
     $.fn.pcNavHover = function() {
@@ -40,14 +42,7 @@
     //SPナビゲーションの処理
     $.fn.spNavClick = function() {
         return this.each(function() {
-            var $this = $(this),
-                navText = $this.find(keyTag).html(),
-                keyText = brText;
-            //長いテキストをkeyTextの直前で改行
-            if(navText.match(keyText) && !navText.match(/<br>/)) {
-                navText = navText.replace(new RegExp('(' + keyText + ')'),'<br>$1');
-                $this.find(keyTag).html(navText);
-            }
+            var $this = $(this);
             //click時の挙動
             $this.off().on({
                 'mouseenter':function() {
@@ -59,14 +54,6 @@
             });
         });
     };
-})(jQuery);
-
-$(function() {
-    //変数格納
-    var $win = $(window),
-        $switch = $('.js-switch'),
-        $nav = $('.js-nav li'),
-        timer = false;
 
     //PCとSPの切り替え
     $win.on('load resize', function() {
@@ -81,4 +68,4 @@ $(function() {
             }
         }, 300);
     });
-});
+})(jQuery);
