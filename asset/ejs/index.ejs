@@ -1,13 +1,17 @@
-<% include common/_head %>
+<%- include('./common/_head') %>
 
-<% include common/_header %>
+        <%- include('./common/_header') %>
 
-
-<!--
-    <div class="wrapper">
         <main class="main">
-            <% include intro/_intro_top %>
+            <section>
+                <%- include('./common/_page_title') %>
+                <ul class="section_area">
+                    <%- include('./section/_parts') %>
+                    <%- include('./section/_parts') %>
+                    <%- include('./section/_parts') %>
+                    <%- include('./section/_parts') %>
+                </ul>
+            </section>
         </main>
-    </div>
--->
-<% include common/_script %>
+
+<%- include('./common/_script') %>

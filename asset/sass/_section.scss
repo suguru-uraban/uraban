@@ -1,131 +1,57 @@
 @charset "utf-8";
 
-.wrapper {
-    margin: 0 auto;
-    padding-top: 120px;
-    width: 1000px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-sizing: border-box;
-    @extend %cleafix;
-    .main {
-        margin-top: 8px;
-        width: 792px;
-        float: left;
-        .content_section {
-            padding: 16px;
-            width: 100%;
-            box-sizing: border-box;
-            border-radius: 4px;
-            background: $white_color;
-            h2 {
-                padding-left: 36px;
-                font-size: 2rem;
-                color: $base_text_color;
-                line-height: 1.4;
-                font-weight: bold;
-                position: relative;
-                border-bottom: $tree_color solid 3px;
-                &:after {
-                    @extend %bablock;
-                    width: 24px;
-                    height: 12px;
-                    top: 28px;
-                    left: 0;
-                    border-radius: 0 0 24px 24px;
-                    border: $tree_color solid 3px;
-                    border-top: none;
-                    background: $white_color;
-                    z-index: 1;
-                }
-            }
-            & h2:before {
-                @extend %bablock;
-                top: 1px;
-                left: 4px;
-                z-index: 2;
-            }
-            &.intro h2:before { @include sprite($sprite-icon-intro-off); }
+.section_block {
+    margin: 0 0 16px 16px;
+    padding: 16px;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px $shadow_color;
+    background: $white_color;
+    h3 {
+        padding-left: 16px;
+        font-size: 1.6rem;
+        line-height: 1.4;
+        position: relative;
+        &:before {
+            @extend %bablock;
+            width: 32px;
+            height: 2px;
+            top: 9px;
+            left: -32px;
+            background: $tree_color;
         }
-        .content_list {
-            margin-left: 14px;
-            padding-top: 24px;
-            position: relative;
-            border-left: $tree_color solid 2px;
-            &:before {
-                @extend %bablock;
-                margin: auto;
-                width: 100%;
-                height: 3px;
-                top: -3px;
-                left: 0;
-                background: linear-gradient(to right, $tree_color, $tree_color 8%, $white_color);
-            }
-            > li {
-                margin-left: 16px;
-                padding-bottom: 16px;
-                position: relative;
-                &:before {
-                    @extend %bablock;
-                    width: 2px;
-                    height: 16px;
-                    bottom: 0;
-                    left: -18px;
-                    background: linear-gradient(to bottom, $tree_color, $white_color);
-                }
-                .content_body {
-                    h3 {
-                        padding-left: 16px;
-                        font-size: 1.6rem;
-                        line-height: 1.4;
-                        position: relative;
-                        &:before {
-                            @extend %bablock;
-                            width: 16px;
-                            height: 2px;
-                            top: 9px;
-                            left: -16px;
-                            background: $tree_color;
-                        }
-                        &:after {
-                            @extend %bablock;
-                            width: 8px;
-                            height: 8px;
-                            top: 4px;
-                            left: 0;
-                            border-radius: 12px;
-                            border: $tree_color solid 2px;
-                            background: $white_color;
-                            z-index: 1;
-                        }
-                    }
-                    .content_parts {
-                        margin-left: 5px;
-                        padding: 8px 0 16px;
-                        position: relative;
-                        border-left: $tree_color solid 1px;
-                        &:before {
-                            @extend %bablock;
-                            width: 1px;
-                            height: 8px;
-                            top: -8px;
-                            left: -1px;
-                            background: $tree_color;
-                        }
-                        &:after {
-                            @extend %bablock;
-                            width: 1px;
-                            height: 16px;
-                            bottom: 0;
-                            left: -1px;
-                            background: linear-gradient(to bottom, $tree_color, $white_color);
-                        }
-                    }
-                }
-            }
+        &:after {
+            @extend %bablock;
+            width: 8px;
+            height: 8px;
+            top: 4px;
+            left: 0;
+            border-radius: 12px;
+            border: $tree_color solid 2px;
+            background: $white_color;
+            z-index: 1;
+        }
+    }
+    .section_parts {
+        margin-left: 5px;
+        padding: 8px 0 16px;
+        position: relative;
+        border-left: $tree_color solid 1px;
+        &:before {
+            @extend %bablock;
+            width: 1px;
+            height: 8px;
+            top: -8px;
+            left: -1px;
+            background: $tree_color;
+        }
+        &:after {
+            @extend %bablock;
+            width: 1px;
+            height: 16px;
+            bottom: 0;
+            left: -1px;
+            background: linear-gradient(to bottom, $tree_color, $white_color);
         }
     }
 }
