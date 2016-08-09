@@ -1,4 +1,8 @@
 # uraban.info
+## URL
+    * http://www.uraban.info/
+## テストURL
+    * http://www.uraban.info/test/
 ## 自己紹介で書くもの
     * このサイトについて
     * 経歴
